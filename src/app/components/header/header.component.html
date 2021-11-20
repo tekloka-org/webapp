@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+   <button mat-button [routerLink]="['/home']">
+     <span class="display-5">Tek</span><span class="display-5">l<img src="assets/images/globe.gif" height="30px" width="30px" class="p-0 m-0"/>ka</span>
+       <!-- <mat-icon class="align-middle logo-icon">public</mat-icon> -->
+    </button>
+   <div class="ms-5">
+    
+    <button mat-stroked-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>apps</mat-icon> {{'category.categories' | translate}}
+    </button>
+    <mat-menu #profileMenu="matMenu">      
+      <button mat-menu-item *ngFor="let c of categories"
+        (click)="navigateToCategoryPages(c)">{{c.name}}</button>
+    </mat-menu>
+
+    <button mat-stroked-button class="ms-2" [routerLink]="['articles']">
+      <mat-icon>article</mat-icon> {{'article.articles' | translate}}
+    </button>
+    <button mat-stroked-button class="ms-2" [routerLink]="['questions']">
+      <mat-icon>question_answer</mat-icon> {{'discussion.qna' | translate}}
+    </button>
+   </div>
+   
+   <span class="header-spacer"></span>
+  
+  <div *ngIf="!isLoggedIn">
+    <button
+      mat-stroked-button
+      [ngStyle]="{ 'margin-right': '10px' }"
+      (click)="displayRegisterPopup()">
+      <mat-icon>person_add</mat-icon> {{'header.signUp' | translate}}
+    </button>
+
+    <button mat-stroked-button (click)="displayLoginPopup()">
+      <mat-icon>login</mat-icon> {{'header.login' | translate}}
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+      
+    <span class="me-2">{{loggedInUser?.name}}</span>
+    <button mat-fab color="primary" [matMenuTriggerFor]="profileMenu" class="background-image"
+    [ngStyle]="{'background-image': 'url(' + getPhotoURL()  + ')'}">
+       <mat-icon *ngIf="getPhotoURL() === '' ">person</mat-icon> 
+    </button>
+    <mat-menu #profileMenu="matMenu">      
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
+  
+ </mat-toolbar>

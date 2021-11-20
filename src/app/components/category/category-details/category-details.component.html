@@ -1,0 +1,55 @@
+<div class="row m-0 p-0 h-100">
+    <div class="col-2 p-0 border-end border-color-gray">
+        <span *ngIf="(hasRole(RoleConstants.SUPER_ADMIN) || hasPermission(PermissionConstants.UPDATE_PAGE));else notAuthorized">
+            <button mat-stroked-button color="primary" class="w-100" (click)="displayAddPage()"
+                style="height: 47px;">{{'page.add' | translate}}</button>
+            <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="drop($event)">
+                <div class="drag-drop-box" *ngFor="let link of pageLinks; let i=index;" cdkDrag>
+                    <div class="drag-drop-custom-placeholder" *cdkDragPlaceholder></div>
+                    <div class="row w-100 h-100 m-0 p-0" [ngClass]="{'bg-color-light-gray': i === selectedPageIndex}">
+                        <div class="col-10 pt-3">
+                            <a (click)="navigateToPage(link.urlPath, i)" style="color: #3f51b5;">{{link.shortTitle}}</a>
+                        </div>
+                        <div class="col-2 pt-1">
+                            <button mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item class="text-primary" (click)="displayUpdatePage(link)">
+                                    <mat-icon class="me-2 text-primary">edit</mat-icon>
+                                    <span>{{'common.update' | translate}}</span>
+                                </button>
+                                <button mat-menu-item class="text-danger" (click)="displayDeletePage(link)">
+                                    <mat-icon class="me-2 text-danger">delete</mat-icon>
+                                    <span>{{'common.delete' | translate}}</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        
+        <ng-template #notAuthorized>
+            <mat-nav-list class="m-0 p-0">
+                <!-- <mat-list-item class="bg-color-light-gray on-focus-no-change" >
+                    <div class="w-100 text-center">
+                        <button mat-raised-button (click)="displayAddPage()">{{'page.add' | translate}}</button>
+                    </div>
+                </mat-list-item> -->
+                <mat-list-item *ngFor="let link of pageLinks; let i=index;" (click)="navigateToPage(link.urlPath, i)"
+                    class="border-bottom border-color-gray p-0" [ngClass]="{'bg-color-dark-gray': i === selectedPageIndex}">
+                    <div class="row w-100 m-0 p-0">
+                        <div class="col-11">
+                            {{link.shortTitle}}
+                        </div>
+                    </div>
+                </mat-list-item>
+            </mat-nav-list>
+        </ng-template>
+
+    </div>
+    <div class="col-8 border-end border-color-gray">
+        <router-outlet></router-outlet>
+    </div>
+</div>

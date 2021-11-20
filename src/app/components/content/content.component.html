@@ -1,0 +1,67 @@
+
+<mat-sidenav-container id="app-sidenav-container">
+    <mat-sidenav
+      id="app-sidenav"
+      mode="side"
+      opened
+      [ngStyle]="{ 'width': sideNavWidth, 'transition': 'width 0.6s'}"
+      *ngIf="isLoggedIn" class="border-end border-color-gray">
+      <mat-nav-list class="overflow-hidden p-0">
+
+        <mat-list-item *ngIf="hasRole('ROLE_MANAGER')" class="bg-color-light-gray border-bottom" (click)="sideMenuDetailsToggle()">
+            <button mat-icon-button class="btn-block"
+            matTooltip="{{expandSideNav===true?'':'sideNav.expandMenu' | translate}}"
+            matTooltipPosition='right'>
+              <mat-icon [ngClass]="expandSideNav===true ? 'double-arrow-backward': 'double-arrow-forward' ">double_arrow</mat-icon>
+              <span class="ps-2">{{'sideNav.expandMenu' | translate}}</span>
+            </button>
+        </mat-list-item>
+
+        <mat-list-item class="border-bottom border-color-gray">
+          <button mat-icon-button class="btn-block" [routerLink]="['/home']">
+            <mat-icon>home</mat-icon>
+            <span class="ps-2">{{'sideNav.home' | translate}}</span>
+          </button>
+        </mat-list-item>
+  
+        <!-- <mat-list-item>        
+          <button mat-icon-button class="btn-block" [routerLink]="['/user-orders']">
+            <mat-icon>history</mat-icon>
+            <span class="ps-2">{{'sideNav.orderHistory' | translate}}</span>
+          </button>
+        </mat-list-item>
+  
+        <mat-list-item>
+          <button mat-icon-button class="btn-block" [routerLink]="['/address-book']">
+            <mat-icon>menu_book</mat-icon>
+            <span class="ps-2">{{'sideNav.addressBook' | translate}}</span>
+          </button>
+        </mat-list-item> -->
+        
+        <mat-list-item *ngIf="hasRole('ROLE_MANAGER')" class="border-bottom border-color-gray">
+          <button mat-icon-button class="btn-block" [routerLink]="['/category-master']">
+            <mat-icon>apps</mat-icon>
+            <span class="ps-2">{{'sideNav.categoryList' | translate}}</span>
+          </button>
+        </mat-list-item>
+        
+        <mat-list-item *ngIf="hasRole('ROLE_ADMIN')" [matMenuTriggerFor]="userManagementMenu" class="border-bottom border-color-gray">
+          <button mat-icon-button >
+            <mat-icon>people</mat-icon>
+            <span class="ps-2">{{'sideNav.userManagement' | translate}}</span>
+          </button>
+        </mat-list-item>
+        <mat-menu #userManagementMenu="matMenu">
+          <button mat-menu-item [routerLink]="['/user-management/permission-list']">{{'sideNav.permissions' | translate}}</button>
+          <button mat-menu-item [routerLink]="['/user-management/role-list']">{{'sideNav.roles' | translate}}</button>
+          <button mat-menu-item [routerLink]="['/user-management/user-list']">{{'sideNav.users' | translate}}</button>
+        </mat-menu>
+ 
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content
+      id="app-sidenav-content"
+      [ngStyle]="{ 'margin-left': sideNavWidth, 'transition': 'margin-left 0.5s' }">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

@@ -1,0 +1,38 @@
+<div class="row h-100 w-100">
+    <div class="col-10 border-end border-color-gray">
+        <div>
+            <h1 [innerHTML]="selectedQuestion?.summary" class="text-primary"></h1>
+            <div [innerHTML]="selectedQuestion?.description"></div>
+        </div>
+        <div class="text-end">
+            <button mat-raised-button (click)="displayAddAnswerPage()" color="primary">
+                {{'discussion.addAnswer' | translate}}
+            </button>
+        </div>
+        <mat-card *ngFor="let answer of allAnswers; let i = index" class="m-3">
+            <div class="row">
+                <div class="col-11">
+                    <div [innerHTML]="answer.description"></div>
+                </div>
+                <div class="col-1">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="displayUpdateAnswerPage(i, answer)" class="text-primary">
+                            <mat-icon class="me-2 text-primary">edit</mat-icon>
+                            <span>{{'discussion.updateAnswer' | translate}}</span>
+                        </button>
+                        <button mat-menu-item (click)="displayDeleteAnswerPage(i, answer)" class="text-danger">
+                            <mat-icon class="me-2 text-danger">delete</mat-icon>
+                            <span>{{'discussion.deleteAnswer' | translate}}</span>
+                        </button>
+                    </mat-menu>        
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-2">
+
+    </div>
+</div>

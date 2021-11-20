@@ -1,0 +1,34 @@
+<div class="row m-5 h-100">
+    <div class="col-4">
+        <mat-card class="h-75">
+            <div class="mat-headline text-primary m-0">{{'category.categories' | translate}}</div>
+            <mat-divider class="mt-2 mb-3"></mat-divider>
+            <div class="mt-2">
+                <mat-grid-list cols="2" rowHeight="80px">
+                    <mat-grid-tile class="p-1" *ngFor="let category of categories">
+                        <mat-card class="w-75" style="background: lightblue;">{{category.name}}</mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </mat-card>
+    </div>
+    <div class="col-4">
+        <mat-card class="h-75">
+            <div class="mat-headline text-primary m-0">{{'article.articles' | translate}}</div>
+            <mat-divider class="mb-3"></mat-divider>
+            <div class="mt-3">
+                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/>    
+            </div>
+            
+        </mat-card>
+    </div>
+    <div class="col-4">
+        <mat-card class="h-75">
+            <div class="mat-headline text-primary m-0">{{'discussion.qna' | translate}}</div>
+            <mat-divider class="mb-3"></mat-divider>
+            <div class="mt-3">
+                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/>    
+            </div>
+        </mat-card>
+    </div>
+</div>

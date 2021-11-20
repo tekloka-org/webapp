@@ -1,0 +1,50 @@
+<div *ngIf="dialogData.tab === ADD_ANSWER_MODAL">
+    <form [formGroup]="addForm" (ngSubmit)="save()">
+        <h1 mat-dialog-title class="text-primary">{{'discussion.addAnswer' | translate}}</h1>
+        <div mat-dialog-content>
+            <div class="row mb-1">
+                <div class="col-lg-12">
+                    <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button  color="accent" class="mr-2" mat-dialog-close>{{'common.close' | translate}}</button>
+            <button mat-raised-button  type="submit" color="primary"
+            [disabled]="!addForm.valid">{{'common.add' | translate}}</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="dialogData.tab === UPDATE_ANSWER_MODAL">
+    <form [formGroup]="updateForm" (ngSubmit)="update()">
+        <h1 mat-dialog-title class="text-primary">{{'discussion.updateAnswer' | translate}}</h1>
+        <div mat-dialog-content>
+            <div class="row mb-1">
+                <div class="col-lg-12">
+                    <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button  color="accent" class="mr-2" mat-dialog-close>{{'common.close' | translate}}</button>
+            <button mat-raised-button  type="submit" color="primary"
+            [disabled]="!updateForm.valid">{{'common.update' | translate}}</button>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="dialogData.tab === DELETE_ANSWER_MODAL">
+    <form [formGroup]="deleteForm" (ngSubmit)="delete()">
+        <h1 mat-dialog-title class="text-primary">{{'discussion.deleteAnswer' | translate}}</h1>
+        <div mat-dialog-content>
+            <div [innerHTML]="selectedAnswer?.description"></div>
+        </div>
+        <div mat-dialog-actions align="end">
+            <button mat-raised-button  color="accent" class="mr-2" mat-dialog-close>{{'common.close' | translate}}</button>
+            <button mat-raised-button  type="submit" color="primary"
+            [disabled]="!deleteForm.valid">{{'common.delete' | translate}}</button>
+        </div>
+    </form>
+</div>
+

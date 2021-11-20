@@ -1,0 +1,91 @@
+{
+    "app": {
+        "name": "Tekloka"
+    },
+    "header": {
+        "signUp": "Sign Up",
+        "login": "Login"
+    },
+    "common": {
+        "filter": "Filter",
+        "filterPlaceHolder": "Enter text to filter",
+        "name": "Name",
+        "code": "Code",
+        "description": "Description",
+        "photo": "Photo",
+        "add": "Add",
+        "update": "Update",
+        "delete": "Delete",
+        "close": "Close",
+        "actions": "Actions"
+    },
+    "user": {
+        "users": "Users",
+        "add": "Add User",
+        "update": "Update User",
+        "delete": "Delete User",
+        "emailAddress": "Email Address",
+        "mobileNumber": "Mobile Number",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "assignRoles": "Assign Roles"
+    },
+    "article": {
+        "articles": "Articles",
+        "add": "Add Article",
+        "update": "Update Article",
+        "delete": "Delete Article"
+    },
+    "category": {
+        "categories": "Categories",
+        "add": "Add Category",
+        "update": "Update Category",
+        "delete": "Delete Category",
+        "urlPath": "URL Path"
+    },
+    "page": {
+        "add": "Add Page",
+        "update": "Update Page",
+        "delete": "Delete Page",
+        "title": "Title",
+        "shortTitle": "Short title",
+        "urlPath": "URL Path",
+        "content": "Content"
+    },
+    "sideNav": {
+        "expandMenu": "Expand Menu",
+        "home": "Home",
+        "categoryList": "Category List",
+        "userManagement": "User Management",
+        "users": "Users",
+        "roles": "Roles",
+        "permissions": "Permissions"
+    },
+    "permission": {
+        "permissions": "Permissions",
+        "add": "Add Permission",
+        "update": "Update Permission",
+        "delete": "Delete Permission"
+    },
+    "role": {
+        "roles": "Roles",
+        "add": "Add Role",
+        "update": "Update Role",
+        "delete": "Delete Role",
+        "assignPermissions": "Assign Permission"
+    },
+    "discussion": {
+        "qna": "Q & A",
+        "questions": "Questions",
+        "startOrAsk": "Start a Discussion or Ask something",
+        "addQuestion": "Add Question",
+        "updateQuestion": "Update Question",
+        "deleteQuestion": "Delete Question",
+        "addAnswer": "Add Answer",
+        "updateAnswer": "Update Answer",
+        "deleteAnswer": "Delete Answer"
+    },
+    "messages": {
+        "noMatchingFilterData": "There is no data matching the filter"
+    }
+}
