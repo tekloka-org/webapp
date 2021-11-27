@@ -77,7 +77,7 @@ export class HeaderComponent implements OnInit {
         if(pageLinks.length > 0){
           this.router.navigate(['category', category.urlPath, pageLinks[0]?.urlPath]);
         }else{
-          this.router.navigate(['category', 'add-page', category.urlPath]);
+          this.router.navigate(['category', category.urlPath, 'add-page']);
         }
         
       }

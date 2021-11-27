@@ -17,7 +17,8 @@
         "update": "Update",
         "delete": "Delete",
         "close": "Close",
-        "actions": "Actions"
+        "actions": "Actions",
+        "showAll": "Show All"
     },
     "user": {
         "users": "Users",
@@ -34,7 +35,8 @@
         "articles": "Articles",
         "add": "Add Article",
         "update": "Update Article",
-        "delete": "Delete Article"
+        "delete": "Delete Article",
+        "latestArticles": "Latest Articles"
     },
     "category": {
         "categories": "Categories",
@@ -83,7 +85,8 @@
         "deleteQuestion": "Delete Question",
         "addAnswer": "Add Answer",
         "updateAnswer": "Update Answer",
-        "deleteAnswer": "Delete Answer"
+        "deleteAnswer": "Delete Answer",
+        "latestQnA": "Latest Q & A"
     },
     "messages": {
         "noMatchingFilterData": "There is no data matching the filter"

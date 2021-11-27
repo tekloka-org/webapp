@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -34,5 +35,4 @@ export class ContentComponent implements OnInit {
       this.expandSideNav = true;
     }
   }
-
 }

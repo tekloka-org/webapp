@@ -1,5 +1,5 @@
-<div class="footer">
-    <mat-toolbar>
-        <h4 class="text-center w-100">Copyright © 2021, Tekloka, Org. All rights reserved.</h4>
+<div [ngClass]="fixedFooter===true ? 'fixed-bottom': '' ">
+    <mat-toolbar color="primary">
+        <span class="mt-3 mat-h3 text-center w-100">Copyright © 2021, Tekloka, Org. All rights reserved.</span>
     </mat-toolbar>
 </div>

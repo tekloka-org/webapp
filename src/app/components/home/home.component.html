@@ -1,33 +1,54 @@
 <div class="row m-5 h-100">
-    <div class="col-4">
-        <mat-card class="h-75">
-            <div class="mat-headline text-primary m-0">{{'category.categories' | translate}}</div>
-            <mat-divider class="mt-2 mb-3"></mat-divider>
-            <div class="mt-2">
-                <mat-grid-list cols="2" rowHeight="80px">
-                    <mat-grid-tile class="p-1" *ngFor="let category of categories">
-                        <mat-card class="w-75" style="background: lightblue;">{{category.name}}</mat-card>
-                    </mat-grid-tile>
-                </mat-grid-list>
+    <div class="col-6">
+        <mat-card class="h-100 p-0 pt-2 home-card">
+            <div class="mat-headline mt-1 ms-3 mb-3">{{'article.articles' | translate}}</div>
+            <mat-divider class="mb-3"></mat-divider>
+            <div class="m-0 p-0 home-card-content">
+                <mat-nav-list class="m-0 p-0">
+                    <mat-list-item *ngFor="let a of articles; let i=index;" (click)="showArticleDetails(a)"
+                        class="border-bottom border-color-gray p-0 m-0">
+                        <div class="row w-100 m-0 p-0">
+                            <div class="col-12 ps-0" (click)="showArticleDetails(a)" >
+                                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/> 
+                                <span class="ms-2">{{a.name}}</span>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                </mat-nav-list>
+            </div>
+            <mat-divider class="mb-3"></mat-divider>
+            <div class="text-end pt-1 pe-2" style="height: 45px;">
+                <a mat-stroked-button color="primary" [routerLink]="['../articles']">
+                    {{'common.showAll' | translate}}
+                </a>
             </div>
         </mat-card>
     </div>
-    <div class="col-4">
-        <mat-card class="h-75">
-            <div class="mat-headline text-primary m-0">{{'article.articles' | translate}}</div>
+    <div class="col-6">
+        <mat-card class="h-100 p-0 pt-2 home-card">
+            <div class="mat-headline mt-1 ms-3 mb-3">{{'discussion.qna' | translate}}</div>
             <mat-divider class="mb-3"></mat-divider>
-            <div class="mt-3">
-                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/>    
+            <div class="m-0 p-0 home-card-content">
+                
+                <mat-nav-list class="m-0 p-0">
+                    <mat-list-item *ngFor="let q of questions; let i=index;" (click)="showQuestionDetails(q)"
+                        class="border-bottom border-color-gray p-0 m-0">
+                        <div class="row w-100 m-0 p-0 h-100">
+                            <div class="col-12 ps-0 align-middle pt-1" (click)="showQuestionDetails(q)">
+                                <button mat-icon-button>
+                                    <mat-icon class="blink">new_releases</mat-icon>
+                                    </button>
+                                <span class="ms-2">{{q.summary}}</span>
+                            </div>
+                        </div>
+                    </mat-list-item>
+                </mat-nav-list>
             </div>
-            
-        </mat-card>
-    </div>
-    <div class="col-4">
-        <mat-card class="h-75">
-            <div class="mat-headline text-primary m-0">{{'discussion.qna' | translate}}</div>
             <mat-divider class="mb-3"></mat-divider>
-            <div class="mt-3">
-                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/>    
+            <div class="text-end pt-1 pe-2" style="height: 45px;">
+                <a mat-stroked-button color="primary"  [routerLink]="['../questions']">
+                    {{'common.showAll' | translate}}
+                </a>
             </div>
         </mat-card>
     </div>

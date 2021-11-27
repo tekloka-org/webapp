@@ -1,7 +1,7 @@
 
 <mat-card class="m-3">
     <div *ngIf="displayForm === 'ADD_FORM'">
-        <label class="mat-headline text-primary">{{'page.add' | translate}}</label>
+        <label class="mat-headline ">{{'page.add' | translate}}</label>
         <form [formGroup]="addForm" (ngSubmit)="save()">
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -40,7 +40,6 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button  color="accent" class="mr-2">{{'common.close' | translate}}</button>
                     <button mat-raised-button  type="submit" color="primary"
                     [disabled]="!addForm.valid">{{'common.add' | translate}}</button>
                 </div>
@@ -49,7 +48,7 @@
     </div>
 
     <div *ngIf="displayForm === 'UPDATE_FORM'">
-        <label class="mat-headline text-primary">{{'page.update' | translate}}</label>
+        <label class="mat-headline ">{{'page.update' | translate}}</label>
         <form [formGroup]="updateForm" (ngSubmit)="update()">
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -88,7 +87,6 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button  color="accent" class="mr-2">{{'common.close' | translate}}</button>
                     <button mat-raised-button  type="submit" color="primary"
                     [disabled]="!updateForm.valid">{{'common.update' | translate}}</button>
                 </div>
@@ -97,7 +95,7 @@
     </div>
 
     <div *ngIf="displayForm === 'DELETE_FORM'">
-        <label class="mat-headline text-primary">{{'page.delete' | translate}}</label>
+        <label class="mat-headline ">{{'page.delete' | translate}}</label>
         <form [formGroup]="deleteForm" (ngSubmit)="delete()">
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -112,8 +110,6 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button type="button" color="accent" class="me-2">{{'common.close' |
-                        translate}}</button>
                     <button mat-raised-button type="submit" color="primary"
                         [disabled]="!deleteForm.valid">{{'common.delete' | translate}}</button>
                 </div>

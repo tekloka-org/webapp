@@ -15,13 +15,13 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item class="text-primary" (click)="displayUpdatePage(link)">
-                                    <mat-icon class="me-2 text-primary">edit</mat-icon>
+                                <button mat-menu-item (click)="displayUpdatePage(link)">
+                                    <mat-icon class="me-2">edit</mat-icon>
                                     <span>{{'common.update' | translate}}</span>
                                 </button>
-                                <button mat-menu-item class="text-danger" (click)="displayDeletePage(link)">
-                                    <mat-icon class="me-2 text-danger">delete</mat-icon>
-                                    <span>{{'common.delete' | translate}}</span>
+                                <button mat-menu-item (click)="displayDeletePage(link)">
+                                    <mat-icon class="me-2" color="warn">delete</mat-icon>
+                                    <span class="text-danger">{{'common.delete' | translate}}</span>
                                 </button>
                             </mat-menu>
                         </div>
@@ -32,11 +32,6 @@
         
         <ng-template #notAuthorized>
             <mat-nav-list class="m-0 p-0">
-                <!-- <mat-list-item class="bg-color-light-gray on-focus-no-change" >
-                    <div class="w-100 text-center">
-                        <button mat-raised-button (click)="displayAddPage()">{{'page.add' | translate}}</button>
-                    </div>
-                </mat-list-item> -->
                 <mat-list-item *ngFor="let link of pageLinks; let i=index;" (click)="navigateToPage(link.urlPath, i)"
                     class="border-bottom border-color-gray p-0" [ngClass]="{'bg-color-dark-gray': i === selectedPageIndex}">
                     <div class="row w-100 m-0 p-0">

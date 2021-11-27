@@ -10,3 +10,32 @@
         transform: rotate(359deg);
     }
 }
+
+
+.blink {
+    animation: blink 2s steps(5, start) infinite;
+    -webkit-animation: blink 1s steps(5, start) infinite;
+  }
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+
+
+.home-card {
+    min-height: 600px;
+}
+
+.home-card-content{
+    min-height: 530px;
+}
+
+.mat-list-item-content {
+    padding: 0 !important;
+}
