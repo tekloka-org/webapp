@@ -41,13 +41,13 @@
                     <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="displayUpdatePage(i, row)" class="text-primary">
-                        <mat-icon class="me-2 text-primary">edit</mat-icon>
+                    <button mat-menu-item (click)="displayUpdatePage(i, row)">
+                        <mat-icon class="me-2">edit</mat-icon>
                         <span>{{'common.update' | translate}}</span>
                     </button>
-                    <button mat-menu-item (click)="displayDeletePage(i, row)" class="text-danger">
-                        <mat-icon class="me-2 text-danger">delete</mat-icon>
-                        <span>{{'common.delete' | translate}}</span>
+                    <button mat-menu-item (click)="displayDeletePage(i, row)">
+                        <mat-icon class="me-2" color="warn">delete</mat-icon>
+                        <span class="text-danger">{{'common.delete' | translate}}</span>
                     </button>
                 </mat-menu>
             </td>

@@ -1,6 +1,6 @@
 <mat-card class="m-3">
     <div *ngIf="displayForm === 'ADD_FORM'">
-        <label class="mat-headline text-primary">{{'role.add' | translate}}</label>
+        <label class="mat-headline">{{'role.add' | translate}}</label>
         <form [formGroup]="addForm" (ngSubmit)="save()">
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -23,7 +23,7 @@
 
             <div class="row mb-3">
                 <div class="col-lg-12">
-                        <label class="mat-subheading-2 text-primary">{{'role.assignPermissions' | translate}}</label>
+                        <label class="mat-subheading-2">{{'role.assignPermissions' | translate}}</label>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -91,7 +91,7 @@
     </div>
 
     <div *ngIf="displayForm === 'UPDATE_FORM'">
-        <label class="mat-headline text-primary">{{'role.update' | translate}}</label>
+        <label class="mat-headline">{{'role.update' | translate}}</label>
         <form [formGroup]="updateForm" (ngSubmit)="update()">
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -114,7 +114,7 @@
 
             <div class="row mb-3">
                 <div class="col-lg-12">
-                        <label class="mat-subheading-2 text-primary">{{'role.assignPermissions' | translate}}</label>
+                        <label class="mat-subheading-2">{{'role.assignPermissions' | translate}}</label>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -182,7 +182,7 @@
     </div>
 
     <div *ngIf="displayForm === 'DELETE_FORM'">
-        <label class="mat-headline text-primary">{{'role.delete' | translate}}</label>
+        <label class="mat-headline">{{'role.delete' | translate}}</label>
         <form [formGroup]="deleteForm" (ngSubmit)="delete()">
             <div class="row mb-1">
                 <div class="col-lg-12">
