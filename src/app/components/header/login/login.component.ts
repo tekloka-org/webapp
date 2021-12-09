@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm).subscribe((response: ApiResponse) => {
         if(response.code === ResponseConstants.LOGIN_SUCCESS){
           const data = response.data as any;
-          localStorage.setItem(DataConstants.X_AUTH_TOKEN, data.X_AUTH_TOKEN);
+          localStorage.setItem(DataConstants.X_AUTH_TOKEN, data[DataConstants.X_AUTH_TOKEN]);
           this.authService.publishAuthSubject('logged-in');
           this.authService.publishLoggedInUserSubject(data.user);
           this.authService.publishRoleKeysSubject(data.roleKeys);

@@ -5,7 +5,7 @@
       mode="side"
       opened
       [ngStyle]="{ 'width': sideNavWidth, 'transition': 'width 0.6s'}"
-      *ngIf="hasRole(RoleConstants.SUPER_ADMIN)" class="border-end border-color-gray">
+      *ngIf="isLoggedIn && hasRole(RoleConstants.SUPER_ADMIN)" class="border-end border-color-gray">
       <mat-nav-list class="overflow-hidden p-0">
         <mat-list-item  class="bg-color-light-gray border-bottom" (click)="sideMenuDetailsToggle()">
             <button mat-icon-button class="btn-block"
