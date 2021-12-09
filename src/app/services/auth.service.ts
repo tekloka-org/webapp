@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiConstants } from '../constants/api-constants';
+import { DataConstants } from '../constants/data-constants';
 import { RoleConstants } from '../constants/role-constants';
 import { User } from '../models/user';
 import { CommonService } from './common.service';
@@ -52,7 +53,7 @@ export class AuthService {
   }
 
   getAuthTokenData(): any{
-    const X_AUTH_TOKEN = localStorage.getItem('X_AUTH_TOKEN');
+    const X_AUTH_TOKEN = localStorage.getItem(DataConstants.X_AUTH_TOKEN);
     if (X_AUTH_TOKEN !== null){
       const tokenData = JSON.parse(atob(X_AUTH_TOKEN.split('.')[1]));
       return tokenData;
@@ -63,7 +64,7 @@ export class AuthService {
 
   setAuthTokenData(authToken: string){
     if(authToken !== null && authToken !== undefined && authToken !== ''){
-      localStorage.setItem('X_AUTH_TOKEN', authToken);
+      localStorage.setItem(DataConstants.X_AUTH_TOKEN, authToken);
     }
   }
 

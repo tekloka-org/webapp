@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { DataConstants } from 'src/app/constants/data-constants';
 import { ResponseConstants } from 'src/app/constants/response-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { AuthService } from 'src/app/services/auth.service';
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm).subscribe((response: ApiResponse) => {
         if(response.code === ResponseConstants.LOGIN_SUCCESS){
           const data = response.data as any;
-          localStorage.setItem('X_AUTH_TOKEN', data.X_AUTH_TOKEN);
+          localStorage.setItem(DataConstants.X_AUTH_TOKEN, data.X_AUTH_TOKEN);
           this.authService.publishAuthSubject('logged-in');
           this.authService.publishLoggedInUserSubject(data.user);
           this.authService.publishRoleKeysSubject(data.roleKeys);
