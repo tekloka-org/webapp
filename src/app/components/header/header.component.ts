@@ -9,6 +9,8 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { AuthDialogComponent } from './auth-dialog/auth-dialog.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @Component({
   selector: 'app-header',
@@ -44,23 +46,19 @@ export class HeaderComponent implements OnInit {
   }
 
   displayRegisterPopup(){
-    const loginDialogRef = this.dialog.open(AuthDialogComponent, {
-       width: '400px',
-      id: 'authDialog'
+    const signUpDialogRef = this.dialog.open(SignUpComponent, {
+       width: '500px',
+       id: 'signUpDialog'
     });
-    loginDialogRef.componentInstance.tabIndex = 1;
+    //loginDialogRef.componentInstance.tabIndex = 1;
   }
   
   displayLoginPopup(){
-    const loginDialogRef = this.dialog.open(AuthDialogComponent, {
-      width: '400px',
-     id: 'authDialog'
+    const loginDialogRef = this.dialog.open(LoginComponent, {
+      width: '500px',
+      id: 'loginDialog'
    });
-   loginDialogRef.componentInstance.tabIndex = 0;
-  }
-
-  getPhotoURL(): string{    
-    return '';  
+   //loginDialogRef.componentInstance.tabIndex = 0;
   }
 
   logout(): void{

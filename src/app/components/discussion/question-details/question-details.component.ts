@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalConstants } from 'src/app/constants/modal-constants';
+import { PermissionConstants } from 'src/app/constants/permission-constants';
 import { ResponseConstants } from 'src/app/constants/response-constants';
 import { Answer } from 'src/app/models/answer';
 import { ApiResponse } from 'src/app/models/api-response';
@@ -24,6 +25,7 @@ export class QuestionDetailsComponent implements OnInit {
   selectedQuestion: Question;
   allAnswers: Answer[];
   loggedInUser: User;
+  PermissionConstants = PermissionConstants;
 
   constructor(private activatedRoute: ActivatedRoute, private discussionService: DiscussionService,
     private translateService: TranslateService, public dialog: MatDialog,
@@ -120,6 +122,19 @@ export class QuestionDetailsComponent implements OnInit {
         this.allAnswers.splice(index, 1);
       }
     });
+  }
+
+  hasPermission(permissionKey: string): boolean{
+    return this.authService.hasPermission(permissionKey);
+  }
+
+  hasAnswerEditAccess(answer: Answer): boolean{
+    let hasAccess = false;
+    let loggedInUser = this.authService.loggedInUserSubject.value;
+    if(loggedInUser.userId === answer.authorId){
+      hasAccess = true;
+    }
+    return hasAccess;
   }
 
 }

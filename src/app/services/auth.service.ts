@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ApiConstants } from '../constants/api-constants';
+import { RoleConstants } from '../constants/role-constants';
 import { User } from '../models/user';
 import { CommonService } from './common.service';
 
@@ -88,9 +89,34 @@ export class AuthService {
             form.value, {headers: this.commonService.getEmptyHeaders()});
   }
 
+  emailConfirmation(emailAddress: string, verificationKey: string): any {
+    var path = environment.apiUrl + ApiConstants.EMAIL_VERIFICATION;
+    path = path.replace('{emailAddress}', emailAddress);
+    path = path.replace('{verificationKey}', verificationKey);
+    return this.http.get(path);
+  }
+
   login(form: any): any {
     return this.http.post(environment.apiUrl + ApiConstants.LOGIN_PATH,
             form.value, {headers: this.commonService.getEmptyHeaders()});
   }
 
+  hasPermission(permissionKey: string): boolean {
+    let authorized = false;
+    let roleKeys = this.roleKeysSubject.value as string[];
+    let permissionKeys = this.permissionKeysSubject.value as string[];
+    if(roleKeys?.includes(RoleConstants.SUPER_ADMIN) || permissionKeys?.includes(permissionKey)){
+      authorized = true;
+    }
+    return authorized;
+  }
+
+  hasRole(roleKey: string): boolean {
+    let authorized = false;
+    let roleKeys = this.roleKeysSubject.value as string[];
+    if(roleKeys?.includes(roleKey)){
+      authorized = true;
+    }
+    return authorized;
+  }
 }

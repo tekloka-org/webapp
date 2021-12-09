@@ -1,36 +1,52 @@
 <div class="row h-100 w-100">
     <div class="col-10 border-end border-color-gray">
-        <div>
-            <h1 [innerHTML]="selectedQuestion?.summary"></h1>
-            <div [innerHTML]="selectedQuestion?.description"></div>
-        </div>
-        <div class="text-end">
+        <mat-card class="m-3">
+            <div>
+                <h1 [innerHTML]="selectedQuestion?.summary"></h1>
+                <div [innerHTML]="selectedQuestion?.description"></div>
+            </div>
+
+        </mat-card>
+        <div class="text-end me-3">
             <button mat-raised-button (click)="displayAddAnswerPage()" color="primary">
                 {{'discussion.addAnswer' | translate}}
             </button>
         </div>
-        <mat-card *ngFor="let answer of allAnswers; let i = index" class="m-3">
-            <div class="row">
-                <div class="col-11">
-                    <div [innerHTML]="answer.description"></div>
-                </div>
-                <div class="col-1">
-                    <button mat-icon-button [matMenuTriggerFor]="menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="displayUpdateAnswerPage(i, answer)" class="text-primary">
-                            <mat-icon class="me-2 text-primary">edit</mat-icon>
-                            <span>{{'discussion.updateAnswer' | translate}}</span>
-                        </button>
-                        <button mat-menu-item (click)="displayDeleteAnswerPage(i, answer)" class="text-danger">
-                            <mat-icon class="me-2 text-danger">delete</mat-icon>
-                            <span>{{'discussion.deleteAnswer' | translate}}</span>
-                        </button>
-                    </mat-menu>        
-                </div>
+
+        <mat-divider class="ms-3 me-3 mt-5 mb-3"></mat-divider>
+
+        <label class="mat-headline ms-3 me-3">{{'discussion.answers' | translate}}</label>
+
+        <div class="row" *ngFor="let answer of allAnswers; let i = index">
+
+            <div class="col-12">
+                <mat-card class="ms-3 me-3 mb-3">
+                    <div class="row">
+                        <div class="col-11">
+                            <div [innerHTML]="answer.description"></div>
+                        </div>
+                        <div class="col-1 text-end">
+                            <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER) 
+                                || hasPermission(PermissionConstants.DELETE_ANSWER)">
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                                <button mat-menu-item (click)="displayUpdateAnswerPage(i, answer)"
+                                    *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER)">
+                                    <mat-icon class="me-2">edit</mat-icon>
+                                    <span>{{'discussion.updateAnswer' | translate}}</span>
+                                </button>
+                                <button mat-menu-item (click)="displayDeleteAnswerPage(i, answer)"
+                                    *ngIf="hasPermission(PermissionConstants.DELETE_ANSWER)">
+                                    <mat-icon class="me-2" color="warn">delete</mat-icon>
+                                    <span class="text-danger">{{'discussion.deleteAnswer' | translate}}</span>
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                </mat-card>
             </div>
-        </mat-card>
+        </div>
     </div>
     <div class="col-2">
 

@@ -3,9 +3,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { PermissionConstants } from 'src/app/constants/permission-constants';
 import { ResponseConstants } from 'src/app/constants/response-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { Question } from 'src/app/models/question';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
 import { DiscussionService } from 'src/app/services/discussion.service';
 
@@ -20,13 +22,13 @@ export class QuestionListComponent implements OnInit {
   displayedColumns: string[] ;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
+  PermissionConstants = PermissionConstants;
+
   constructor(private router: Router, private discussionService: DiscussionService,
-    private commonService: CommonService) { }
+    private commonService: CommonService, private authService: AuthService) { }
 
   ngOnInit(): void {
-   this.displayedColumns = [ 'name', 'authorId', 'actions'];
-
+   this.displayedColumns = [ 'name','createdOn', 'modifiedOn', 'authorName', 'actions'];
    this.discussionService.getAllQuestions().subscribe((response: ApiResponse) => {
       if(response.code === ResponseConstants.QUESTION_LIST_FOUND){
         const data = response.data as any;
@@ -69,6 +71,10 @@ export class QuestionListComponent implements OnInit {
   displayDetailsPage(question: Question){
     this.discussionService.setSelectedQuestion(question);
     this.router.navigate(['question', question.authorId, question.urlPath]);
+  }
+
+  hasPermission(permissionKey: string): boolean{
+    return this.authService.hasPermission(permissionKey);
   }
 
 }

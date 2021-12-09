@@ -1,10 +1,12 @@
 export class ApiConstants {
 
-    public static SIGN_UP_PATH = '/user-service/public/sign-up';    
+    public static SIGN_UP_PATH = '/user-service/public/sign-up';  
+    public static EMAIL_VERIFICATION = '/user-service/public/email-verification/{emailAddress}/{verificationKey}';    
     public static LOGIN_PATH = '/user-service/public/login';
 
+    public static UPLOAD_CONTENT_IMAGE = '/file-server/file/upload-content-image';
+
     public static GET_ALL_CATEGORIES = '/category-service/public/get-all-categories';
-    
     public static SAVE_CATEGORY = '/category-service/category/save';
     public static UPDATE_CATEGORY = '/category-service/category/update';
     public static DELETE_CATEGORY = '/category-service/category/delete';

@@ -18,7 +18,11 @@
         "delete": "Delete",
         "close": "Close",
         "actions": "Actions",
-        "showAll": "Show All"
+        "showAll": "Show All",
+        "author": "Author",
+        "createdOn": "Created On",
+        "modifiedOn": "Modified On",
+        "ok": "Ok"
     },
     "user": {
         "users": "Users",
@@ -29,6 +33,7 @@
         "mobileNumber": "Mobile Number",
         "password": "Password",
         "confirmPassword": "Confirm Password",
+        "validPassword": "Min 8 characters inlcuding 1 number and 1 special char (@$!%*#?&)",
         "assignRoles": "Assign Roles"
     },
     "article": {
@@ -79,6 +84,7 @@
     "discussion": {
         "qna": "Q & A",
         "questions": "Questions",
+        "answers": "Answers",
         "startOrAsk": "Start a Discussion or Ask something",
         "addQuestion": "Add Question",
         "updateQuestion": "Update Question",
@@ -89,6 +95,14 @@
         "latestQnA": "Latest Q & A"
     },
     "messages": {
-        "noMatchingFilterData": "There is no data matching the filter"
+        "noMatchingFilterData": "There is no data matching the filter",
+        "emailVerified": "Email is verified. Please login now.",
+        "emailAlreadyVerified": "Email is already verified. Please login now.",
+        "emailNotVerified": "Email is not verified. Please verify it before login.",
+        "emailVerificationFailed": "Email verification failed. Please try again",
+        "loginFailed": "Not able to login",
+        "passwordsMismatch": "Password and Confirm password should match",
+        "signUpSuccess": "Signup Success",
+        "signUpSuccessInfo": "Account veification link is sent to your email. Please confirm to login to your account."
     }
 }

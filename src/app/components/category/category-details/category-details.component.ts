@@ -21,9 +21,6 @@ export class CategoryDetailsComponent implements OnInit {
   categoryUrlPath: string;
   selectedPageIndex: number = 0;
 
-  roleKeys: string[] = [];
-  permissionKeys: string[] = [];
-  
   RoleConstants = RoleConstants;
   PermissionConstants = PermissionConstants;
 
@@ -39,14 +36,7 @@ export class CategoryDetailsComponent implements OnInit {
           this.pageLinks = data.pageLinkList as PageLink[];
         }
       });
-    });
-
-    this.authService.subscribeRoleKeysSubject().subscribe(result => {
-      this.roleKeys = result;
-    });
-    this.authService.subscribePermissionKeysSubject().subscribe(result => {
-      this.permissionKeys = result;
-    });
+    });   
   }
 
   navigateToPage(pageUrlPath: string, index: number){
@@ -76,12 +66,8 @@ export class CategoryDetailsComponent implements OnInit {
     });
   }
 
-  hasRole(key: string): boolean{
-    return this.roleKeys?.includes(key);
-  }
-
-  hasPermission(key: string): boolean{
-    return this.permissionKeys?.includes(key);
+  hasPermission(permissionKey: string): boolean{
+    return this.authService.hasPermission(permissionKey);
   }
 
 }

@@ -26,7 +26,7 @@ import { RoleListComponent } from './components/user-management/role-list/role-l
 import { RoleSupportComponent } from './components/user-management/role-support/role-support.component';
 import { UserListComponent } from './components/user-management/user-list/user-list.component';
 import { UserSupportComponent } from './components/user-management/user-support/user-support.component';
-import { ModalComponent } from './components/modal/modal.component';
+import { ModalComponent } from './components/common/modal/modal.component';
 import { CustomHttpInterceptor } from './interceptors/custom-http.interceptor';
 import { ArticleListComponent } from './components/article/article-list/article-list.component';
 import { ArticleDetailsComponent } from './components/article/article-details/article-details.component';
@@ -35,6 +35,9 @@ import { QuestionDetailsComponent } from './components/discussion/question-detai
 import { QuestionSupportComponent } from './components/discussion/question-support/question-support.component';
 import { QuestionListComponent } from './components/discussion/question-list/question-list.component';
 import { AnswerSupportComponent } from './components/discussion/answer-support/answer-support.component';
+import { ProcessComponent } from './components/common/process/process.component';
+import { LoginComponent } from './components/header/login/login.component';
+import { SignUpComponent } from './components/header/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { AnswerSupportComponent } from './components/discussion/answer-support/a
     QuestionSupportComponent,
     QuestionDetailsComponent,
     QuestionListComponent,
-    AnswerSupportComponent
+    AnswerSupportComponent,
+    ProcessComponent,
+    LoginComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

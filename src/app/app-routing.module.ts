@@ -16,8 +16,11 @@ import { ArticleDetailsComponent } from './components/article/article-details/ar
 import { QuestionSupportComponent } from './components/discussion/question-support/question-support.component';
 import { QuestionListComponent } from './components/discussion/question-list/question-list.component';
 import { QuestionDetailsComponent } from './components/discussion/question-details/question-details.component';
+import { ProcessComponent } from './components/common/process/process.component';
 
 const routes: Routes = [
+  
+  { path: '', component:  HomeComponent},
   { path: 'home', component:  HomeComponent},
   
   { path: 'category-master', component:  CategoryListComponent},
@@ -53,8 +56,7 @@ const routes: Routes = [
       { path: ':page-url-path', component:  PageDetailsComponent}
     ]
   },
-  
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  { path: 'process/:action', component: ProcessComponent}
 ];
 
 @NgModule({

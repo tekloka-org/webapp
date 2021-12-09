@@ -1,6 +1,6 @@
 <div class="row m-0 p-0 h-100">
     <div class="col-2 p-0 border-end border-color-gray">
-        <span *ngIf="(hasRole(RoleConstants.SUPER_ADMIN) || hasPermission(PermissionConstants.UPDATE_PAGE));else notAuthorized">
+        <span *ngIf="hasPermission(PermissionConstants.UPDATE_CATEGORY_PAGE);else notAuthorized">
             <button mat-stroked-button color="primary" class="w-100" (click)="displayAddPage()"
                 style="height: 47px;">{{'page.add' | translate}}</button>
             <div cdkDropList class="drag-drop-list" (cdkDropListDropped)="drop($event)">
@@ -15,11 +15,11 @@
                                 <mat-icon>more_vert</mat-icon>
                             </button>
                             <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="displayUpdatePage(link)">
+                                <button mat-menu-item (click)="displayUpdatePage(link)" *ngIf="hasPermission(PermissionConstants.UPDATE_CATEGORY_PAGE)">
                                     <mat-icon class="me-2">edit</mat-icon>
                                     <span>{{'common.update' | translate}}</span>
                                 </button>
-                                <button mat-menu-item (click)="displayDeletePage(link)">
+                                <button mat-menu-item (click)="displayDeletePage(link)" *ngIf="hasPermission(PermissionConstants.DELETE_CATEGORY_PAGE)">
                                     <mat-icon class="me-2" color="warn">delete</mat-icon>
                                     <span class="text-danger">{{'common.delete' | translate}}</span>
                                 </button>

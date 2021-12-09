@@ -1,0 +1,21 @@
+<div class="mat-headline">{{'header.login' | translate}}</div>
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field appearance="outline" class="w-100" color="warn">
+        <mat-label>{{'user.emailAddress' | translate}}</mat-label>
+        <input matInput placeholder="{{'user.emailAddress' | translate}}" formControlName="emailAddress" required
+            maxlength="255" />
+        <mat-icon matPrefix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100" color="warn">
+        <mat-label>{{'user.password' | translate}}</mat-label>
+        <input matInput placeholder="{{'user.password' | translate}}" formControlName="password" required
+            maxlength="255" type="password" />
+        <mat-icon matPrefix>lock</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="loginForm.invalid || isProcessing">
+        <img src="assets/images/spinner.gif" *ngIf="isProcessing"
+            height="20px" width="20px" class="p-0 m-0"/> {{'header.login' | translate}}
+    </button>
+</form>

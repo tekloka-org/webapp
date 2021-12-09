@@ -3,10 +3,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { PermissionConstants } from 'src/app/constants/permission-constants';
 import { ResponseConstants } from 'src/app/constants/response-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
@@ -20,13 +22,14 @@ export class ArticleListComponent implements OnInit {
   displayedColumns: string[] ;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  
-  //articles: Article[];
+
+  PermissionConstants = PermissionConstants;
+
   constructor(private router: Router, private articleService: ArticleService,
-    private commonService: CommonService) { }
+    private commonService: CommonService, private authService: AuthService) { }
 
   ngOnInit(): void {
-   this.displayedColumns = [ 'name', 'authorId', 'actions'];
+   this.displayedColumns = [ 'name','createdOn', 'modifiedOn', 'authorName', 'actions'];
 
    this.articleService.getAllArticles().subscribe((response: ApiResponse) => {
       if(response.code === ResponseConstants.ARTICLE_LIST_FOUND){
@@ -70,6 +73,10 @@ export class ArticleListComponent implements OnInit {
   displayDetailsPage(article: Article){
     this.articleService.setSelectedArticle(article);
     this.router.navigate(['article', article.authorId,article.urlPath]);
+  }
+
+  hasPermission(permissionKey: string): boolean{
+    return this.authService.hasPermission(permissionKey);
   }
 
 }

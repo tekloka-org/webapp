@@ -17,6 +17,5 @@ export class ModalConstants {
     public static ADD_ANSWER_MODAL = 'ADD_ANSWER_MODAL';
     public static UPDATE_ANSWER_MODAL = 'UPDATE_ANSWER_MODAL';
     public static DELETE_ANSWER_MODAL = 'DELETE_ANSWER_MODAL';
-
     
 }

@@ -1,0 +1,7 @@
+<div *ngIf="dialogData.tab === INFO_MODAL">
+    <h1 mat-dialog-title>{{dialogData.messages.title | translate}}</h1>
+    <div mat-dialog-content>{{dialogData.messages.content | translate}}</div>
+    <div mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>{{'common.ok' | translate}}</button>
+    </div>
+</div>

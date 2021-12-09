@@ -20,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.selectedArticleAuthorId = params['author-id'] 
+      this.selectedArticleAuthorId = params['author-id'];
       this.selectedArticleUrlPath = params['article-url-path'];
       var articleParam = this.articleService.getSelectedArticle() as Article;
       if(articleParam === null || articleParam === undefined || articleParam.urlPath !== this.selectedArticleUrlPath){

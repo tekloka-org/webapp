@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RoleConstants } from 'src/app/constants/role-constants';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,6 +13,8 @@ export class ContentComponent implements OnInit {
   isLoggedIn: boolean = true;
   sideNavWidth = '50px';
   expandSideNav: boolean = false;
+  
+  RoleConstants = RoleConstants;
 
   constructor(private authService: AuthService) { }
 
@@ -22,8 +25,12 @@ export class ContentComponent implements OnInit {
     });
   }
 
-  hasRole(role: string): boolean{
-    return true;
+  hasRole(roleKey: string): boolean{
+    return this.authService.hasRole(roleKey);
+  }
+
+  hasPermission(permissionKey: string): boolean{
+    return this.authService.hasPermission(permissionKey);
   }
 
   sideMenuDetailsToggle(): void {
