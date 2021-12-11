@@ -31,7 +31,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
     const AUTH_TOKEN = localStorage.getItem(DataConstants.X_AUTH_TOKEN);
     return request.clone({
       setHeaders: {
-        'X-AUTH-TOKEN': `${AUTH_TOKEN}`
+        'xAuthToken': `${AUTH_TOKEN}`
       }
     });
   }

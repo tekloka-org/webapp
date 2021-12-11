@@ -107,7 +107,7 @@ export class ArticleSupportComponent implements OnInit {
           const savedArticle = data.article as Article;
           this.articleService.setSelectedArticle(savedArticle);
           this.commonService.displaySnackBarMessages('added', 3000);
-          this.router.navigate(['article-details', savedArticle.authorId, savedArticle.urlPath]);
+          this.router.navigate(['article', savedArticle.authorId, savedArticle.urlPath]);
         }
       });
     }
@@ -120,7 +120,7 @@ export class ArticleSupportComponent implements OnInit {
           const data = response.data as any;
           const savedArticle = data.article as Article;
           this.commonService.displaySnackBarMessages('updated', 3000);
-          this.router.navigate(['article-details', savedArticle.authorId, savedArticle.urlPath]);
+          this.router.navigate(['article', savedArticle.authorId, savedArticle.urlPath]);
         }
       });
     }

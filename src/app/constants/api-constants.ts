@@ -40,7 +40,7 @@ export class ApiConstants {
     public static UPDATE_ARTICLE = '/article-service/article/update';
     public static DELETE_ARTICLE = '/article-service/article/delete';
     public static GET_ALL_ARTICLES = '/article-service/public/get-all-articles';
-    public static GET_ARTICLE = '/article-service/public/article/{authorId}/{urlPath}';
+    public static GET_ARTICLE = '/article-service/public/{authorId}/{urlPath}';
 
     public static SAVE_QUESTION = '/discussion-service/question/save';
     public static UPDATE_QUESTION = '/discussion-service/question/update';

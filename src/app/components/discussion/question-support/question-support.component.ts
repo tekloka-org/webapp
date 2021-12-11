@@ -106,7 +106,7 @@ export class QuestionSupportComponent implements OnInit {
           const savedQuestion = data.question as Question;
           this.discussionService.setSelectedQuestion(savedQuestion);
           this.commonService.displaySnackBarMessages('added', 3000);
-          this.router.navigate(['question-details', savedQuestion.authorId, savedQuestion.urlPath]);
+          this.router.navigate(['question', savedQuestion.authorId, savedQuestion.urlPath]);
         }
       });
     }
@@ -119,7 +119,7 @@ export class QuestionSupportComponent implements OnInit {
           const data = response.data as any;
           const savedQuestion = data.question as Question;
           this.commonService.displaySnackBarMessages('updated', 3000);
-          this.router.navigate(['question-details', savedQuestion.authorId, savedQuestion.urlPath]);
+          this.router.navigate(['question', savedQuestion.authorId, savedQuestion.urlPath]);
         }
       });
     }

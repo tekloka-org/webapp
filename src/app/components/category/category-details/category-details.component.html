@@ -8,7 +8,7 @@
                     <div class="drag-drop-custom-placeholder" *cdkDragPlaceholder></div>
                     <div class="row w-100 h-100 m-0 p-0" [ngClass]="{'bg-color-light-gray': i === selectedPageIndex}">
                         <div class="col-10 pt-3">
-                            <a (click)="navigateToPage(link.urlPath, i)" style="color: #3f51b5;">{{link.shortTitle}}</a>
+                            <a (click)="navigateToPage(link.urlPath, i)" style="color: #3f51b5;">{{link.title}}</a>
                         </div>
                         <div class="col-2 pt-1">
                             <button mat-icon-button [matMenuTriggerFor]="menu">

@@ -88,6 +88,7 @@
         "delete": "Delete Question",
         "summary": "Summary",
         "description": "Description",
+        "answers": "Answers",
         "addAnswer": "Add Answer",
         "updateAnswer": "Update Answer",
         "deleteAnswer": "Delete Answer",
