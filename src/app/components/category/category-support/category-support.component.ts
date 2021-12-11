@@ -95,4 +95,20 @@ export class CategorySupportComponent implements OnInit {
     }
   }
 
+  setAddFormURLPath(){
+    let name = this.addForm.get('name')?.value;
+    let url = this.formatURL(name);
+    this.addForm.get('urlPath')?.setValue(url);
+  }
+
+  setUpdateFormURLPath(){
+    let name = this.updateForm.get('name')?.value;
+    let url = this.formatURL(name);
+    this.updateForm.get('urlPath')?.setValue(url);
+  }
+
+  formatURL(name: string): string{
+    return this.commonService.formatURL(name);
+  }
+
 }

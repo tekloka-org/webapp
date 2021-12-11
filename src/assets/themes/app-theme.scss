@@ -1,24 +1,26 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 @include mat.core();
 
-$primary-palette: mat.define-palette(mat.$gray-palette, 900,900,900);
+$primary-palette: mat.define-palette(mat.$gray-palette, 900, 900, 900);
 $accent-palette: mat.define-palette(mat.$indigo-palette, A200, A100, A400);
 $warn-palette: mat.define-palette(mat.$red-palette);
 
-$app-dark-theme: mat.define-light-theme((
- color: (
-   primary: $primary-palette,
-   accent: $accent-palette,
-   warn: $warn-palette,
- )
-));
+$app-dark-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+      warn: $warn-palette,
+    ),
+  )
+);
 
 @include mat.all-component-themes($app-dark-theme);
 
 .mat-header-cell {
   background: #696969;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
   font-size: large;
 }
@@ -28,5 +30,9 @@ tr.mat-header-row {
 }
 
 .mat-sort-header-arrow {
-  color: #FFFFFF !important;
+  color: #ffffff !important;
+}
+
+.mat-form-field-required-marker {
+  color: red;
 }

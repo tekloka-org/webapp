@@ -67,7 +67,7 @@ export class QuestionDetailsComponent implements OnInit {
     let messages = {
       title: 'Add Answer'
     };
-    this.translateService.get('discussion.addAnswer').subscribe((res: string) => {
+    this.translateService.get('question.addAnswer').subscribe((res: string) => {
       messages.title = res;
     });
     const dialogRef = this.dialog.open(AnswerSupportComponent, {
@@ -87,7 +87,7 @@ export class QuestionDetailsComponent implements OnInit {
       title: 'Update Answer',
       answer: answer
     };
-    this.translateService.get('discussion.updateAnswer').subscribe((res: string) => {
+    this.translateService.get('question.updateAnswer').subscribe((res: string) => {
       messages.title = res;
     });
     const dialogRef = this.dialog.open(AnswerSupportComponent, {
@@ -108,7 +108,7 @@ export class QuestionDetailsComponent implements OnInit {
       title: 'Delete Answer',
       answer: answer
     };
-    this.translateService.get('discussion.deleteAnswer').subscribe((res: string) => {
+    this.translateService.get('question.deleteAnswer').subscribe((res: string) => {
       messages.title = res;
     });
     const dialogRef = this.dialog.open(AnswerSupportComponent, {

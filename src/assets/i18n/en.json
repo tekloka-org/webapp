@@ -12,6 +12,7 @@
         "name": "Name",
         "code": "Code",
         "description": "Description",
+        "urlPath": "URL Path",
         "photo": "Photo",
         "add": "Add",
         "update": "Update",
@@ -34,7 +35,8 @@
         "password": "Password",
         "confirmPassword": "Confirm Password",
         "validPassword": "Min 8 characters inlcuding 1 number and 1 special char (@$!%*#?&)",
-        "assignRoles": "Assign Roles"
+        "assignRoles": "Assign Roles",
+        "verified": "Verified"
     },
     "article": {
         "articles": "Articles",
@@ -47,8 +49,7 @@
         "categories": "Categories",
         "add": "Add Category",
         "update": "Update Category",
-        "delete": "Delete Category",
-        "urlPath": "URL Path"
+        "delete": "Delete Category"
     },
     "page": {
         "add": "Add Page",
@@ -56,7 +57,6 @@
         "delete": "Delete Page",
         "title": "Title",
         "shortTitle": "Short title",
-        "urlPath": "URL Path",
         "content": "Content"
     },
     "sideNav": {
@@ -81,17 +81,17 @@
         "delete": "Delete Role",
         "assignPermissions": "Assign Permission"
     },
-    "discussion": {
-        "qna": "Q & A",
+    "question": {
         "questions": "Questions",
-        "answers": "Answers",
-        "startOrAsk": "Start a Discussion or Ask something",
-        "addQuestion": "Add Question",
-        "updateQuestion": "Update Question",
-        "deleteQuestion": "Delete Question",
+        "add": "Add Question",
+        "update": "Update Question",
+        "delete": "Delete Question",
+        "summary": "Summary",
+        "description": "Description",
         "addAnswer": "Add Answer",
         "updateAnswer": "Update Answer",
         "deleteAnswer": "Delete Answer",
+        "qna": "Q & A",
         "latestQnA": "Latest Q & A"
     },
     "messages": {

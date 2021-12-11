@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { PermissionConstants } from 'src/app/constants/permission-constants';
 import { ResponseConstants } from 'src/app/constants/response-constants';
+import { RouterConstants } from 'src/app/constants/router-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
@@ -72,7 +73,7 @@ export class ArticleListComponent implements OnInit {
 
   displayDetailsPage(article: Article){
     this.articleService.setSelectedArticle(article);
-    this.router.navigate(['article', article.authorId,article.urlPath]);
+    this.router.navigate([RouterConstants.VIEW_ARTICLE, article.authorId,article.urlPath]);
   }
 
   hasPermission(permissionKey: string): boolean{

@@ -5,6 +5,8 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { ResponseConstants } from 'src/app/constants/response-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { Page } from 'src/app/models/page';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { CommonService } from 'src/app/services/common.service';
 
@@ -17,7 +19,7 @@ export class PageSupportComponent implements OnInit {
   
   addForm = new FormGroup({
     title : new FormControl('', [Validators.required]),
-    shortTitle : new FormControl('', [Validators.required]),
+    //shortTitle : new FormControl('', [Validators.required]),
     urlPath : new FormControl('', [Validators.required]),
     content : new FormControl('', [Validators.required]),
     categoryUrlPath : new FormControl('', [Validators.required])
@@ -26,7 +28,7 @@ export class PageSupportComponent implements OnInit {
   updateForm = new FormGroup({
     pageId : new FormControl('', [Validators.required]),
     title : new FormControl('', [Validators.required]),
-    shortTitle : new FormControl('', [Validators.required]),
+    //shortTitle : new FormControl('', [Validators.required]),
     urlPath : new FormControl('', [Validators.required]),
     content : new FormControl('', [Validators.required]),
     categoryUrlPath : new FormControl('')
@@ -42,11 +44,20 @@ export class PageSupportComponent implements OnInit {
   selectedPageUrlPath: string;
   categoryUrlPath: string;
   selectedPage: Page;
+  loggedInUser: User;
 
   constructor(private categoryService: CategoryService, private activatedRoute: ActivatedRoute,
-    private commonService: CommonService, private router: Router) { }
+    private commonService: CommonService, private router: Router, private authService: AuthService) { }
   
   ngOnInit(): void {
+    
+    if(this.authService.isLoggedIn()){
+      this.authService.subscribeLoggedInUserSubject().subscribe(result => {
+        this.loggedInUser = this.authService.loggedInUserSubject.value as User;
+        this.addForm.get('authorId')?.setValue(this.loggedInUser.userId);
+      });
+    }
+
     this.editorConfig = this.commonService.editorConfig;
     this.activatedRoute.parent?.params.subscribe(params => {
       this.categoryUrlPath = params['category-url-path'];
@@ -81,7 +92,7 @@ export class PageSupportComponent implements OnInit {
   setFormValues(selectedPage: Page) {    
     this.updateForm.get('pageId')?.setValue(selectedPage.pageId);
     this.updateForm.get('title')?.setValue(selectedPage.title);
-    this.updateForm.get('shortTitle')?.setValue(selectedPage.shortTitle);
+   // this.updateForm.get('shortTitle')?.setValue(selectedPage.shortTitle);
     this.updateForm.get('urlPath')?.setValue(selectedPage.urlPath);
     this.updateForm.get('content')?.setValue(selectedPage.content);
     this.updateForm.get('categoryUrlPath')?.setValue(this.categoryUrlPath);
@@ -121,6 +132,22 @@ export class PageSupportComponent implements OnInit {
         }
       });
     }
+  }
+
+  setAddFormURLPath(){
+    let title = this.addForm.get('title')?.value;
+    let url = this.formatURL(title);
+    this.addForm.get('urlPath')?.setValue(url);
+  }
+
+  setUpdateFormURLPath(){
+    let title = this.updateForm.get('title')?.value;
+    let url = this.formatURL(title);
+    this.updateForm.get('urlPath')?.setValue(url);
+  }
+
+  formatURL(title: string): string{
+    return this.commonService.formatURL(title);
   }
 
 }

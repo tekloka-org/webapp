@@ -1,6 +1,6 @@
 <div *ngIf="dialogData.tab === ADD_ANSWER_MODAL">
     <form [formGroup]="addForm" (ngSubmit)="save()">
-        <h1 mat-dialog-title >{{'discussion.addAnswer' | translate}}</h1>
+        <h1 mat-dialog-title >{{'question.addAnswer' | translate}}</h1>
         <div mat-dialog-content>
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -18,7 +18,7 @@
 
 <div *ngIf="dialogData.tab === UPDATE_ANSWER_MODAL">
     <form [formGroup]="updateForm" (ngSubmit)="update()">
-        <h1 mat-dialog-title >{{'discussion.updateAnswer' | translate}}</h1>
+        <h1 mat-dialog-title >{{'question.updateAnswer' | translate}}</h1>
         <div mat-dialog-content>
             <div class="row mb-1">
                 <div class="col-lg-12">
@@ -36,7 +36,7 @@
 
 <div *ngIf="dialogData.tab === DELETE_ANSWER_MODAL">
     <form [formGroup]="deleteForm" (ngSubmit)="delete()">
-        <h1 mat-dialog-title >{{'discussion.deleteAnswer' | translate}}</h1>
+        <h1 mat-dialog-title >{{'question.deleteAnswer' | translate}}</h1>
         <div mat-dialog-content>
             <div [innerHTML]="selectedAnswer?.description"></div>
         </div>

@@ -17,8 +17,8 @@ export class CommonService {
     editable: true,
       spellcheck: true,
       height: 'auto',
-      minHeight: '400px',
-      maxHeight: 'auto',
+      minHeight: '500px',
+      maxHeight: '500px',
       width: 'auto',
       minWidth: '0',
       translate: 'yes',
@@ -113,4 +113,7 @@ export class CommonService {
             formData, {headers: this.getEmptyHeaders()});
   }
 
+  formatURL(text: string): string{
+    return text.replace(/\s+/g, '-').toLowerCase();;
+  }
 }

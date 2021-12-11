@@ -4,14 +4,14 @@
         <mat-label>{{'user.emailAddress' | translate}}</mat-label>
         <input matInput placeholder="{{'user.emailAddress' | translate}}" formControlName="emailAddress" required
             maxlength="255" />
-        <mat-icon matPrefix>email</mat-icon>
+        <!-- <mat-icon matPrefix>email</mat-icon> -->
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100" color="warn">
         <mat-label>{{'user.password' | translate}}</mat-label>
         <input matInput placeholder="{{'user.password' | translate}}" formControlName="password" required
             maxlength="255" type="password" />
-        <mat-icon matPrefix>lock</mat-icon>
+        <!-- <mat-icon matPrefix>lock</mat-icon> -->
     </mat-form-field>
 
     <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="loginForm.invalid || isProcessing">

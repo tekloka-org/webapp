@@ -17,6 +17,7 @@ import { QuestionSupportComponent } from './components/discussion/question-suppo
 import { QuestionListComponent } from './components/discussion/question-list/question-list.component';
 import { QuestionDetailsComponent } from './components/discussion/question-details/question-details.component';
 import { ProcessComponent } from './components/common/process/process.component';
+import { RouterConstants } from './constants/router-constants';
 
 const routes: Routes = [
   
@@ -40,12 +41,12 @@ const routes: Routes = [
   { path: 'add-article', component: ArticleSupportComponent},
   { path: 'update-article/:author-id/:article-url-path', component: ArticleSupportComponent},
   { path: 'delete-article/:author-id/:article-url-path', component: ArticleSupportComponent},
-  { path: 'article/:author-id/:article-url-path', component: ArticleDetailsComponent},
+  { path:  RouterConstants.VIEW_ARTICLE+'/:author-id/:article-url-path', component: ArticleDetailsComponent},
 
   { path: 'questions', component: QuestionListComponent},
-  { path: 'add-question', component: ArticleSupportComponent},
-  { path: 'update-question/:author-id/:question-url-path', component: ArticleSupportComponent},
-  { path: 'delete-question/:author-id/:question-url-path', component: ArticleSupportComponent},
+  { path: 'add-question', component: QuestionSupportComponent},
+  { path: 'update-question/:author-id/:question-url-path', component: QuestionSupportComponent},
+  { path: 'delete-question/:author-id/:question-url-path', component: QuestionSupportComponent},
   { path: 'question/:author-id/:question-url-path', component: QuestionDetailsComponent},
 
   { path: 'category/:category-url-path', component:  CategoryDetailsComponent,

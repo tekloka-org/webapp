@@ -1,37 +1,39 @@
 
 <mat-card class="m-3">
     <div *ngIf="displayForm === 'ADD_FORM'">
-        <label class="mat-headline text-primary">{{'discussion.add' | translate}}</label>
+        <label class="mat-headline">{{'question.add' | translate}}</label>
         <form [formGroup]="addForm" (ngSubmit)="save()">
+            
             <div class="row mb-1">
                 <div class="col-lg-12">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>{{'page.urlPath' | translate}}</mat-label>
-                        <input matInput placeholder="{{'page.urlPath' | translate}}"
-                        formControlName="urlPath" required maxlength="255" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row mb-1">
-                <div class="col-lg-12">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>{{'page.urlPath' | translate}}</mat-label>
-                        <input matInput placeholder="{{'page.summary' | translate}}"
+                        <mat-label>{{'question.summary' | translate}}</mat-label>
+                        <input matInput placeholder="{{'question.summary' | translate}}" (keyup)="setAddFormURLPath()"
                         formControlName="summary" required maxlength="255" />
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-3">
                 <div class="col-lg-12">
                     <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-lg-12">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>{{'common.urlPath' | translate}}</mat-label>
+                        <span matPrefix class="me-3">/question/{{loggedInUser?.userId}}/</span>
+                        <input matInput placeholder="{{'common.urlPath' | translate}}" readonly
+                        formControlName="urlPath" maxlength="255" />
+                    </mat-form-field>
                 </div>
             </div>
             
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button  color="primary" class="mr-2">{{'common.close' | translate}}</button>
-                    <button mat-raised-button  type="submit" color="primary"
+                    <button mat-stroked-button color="primary" class="me-2">{{'common.close' | translate}}</button>
+                    <button mat-raised-button type="submit" color="primary"
                     [disabled]="!addForm.valid">{{'common.add' | translate}}</button>
                 </div>
             </div>
@@ -39,37 +41,39 @@
     </div>
 
     <div *ngIf="displayForm === 'UPDATE_FORM'">
-        <label class="mat-headline text-primary">{{'discussion.update' | translate}}</label>
+        <label class="mat-headline">{{'question.update' | translate}}</label>
         <form [formGroup]="updateForm" (ngSubmit)="update()">
+            
             <div class="row mb-1">
                 <div class="col-lg-12">
                     <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>{{'page.urlPath' | translate}}</mat-label>
-                        <input matInput placeholder="{{'page.urlPath' | translate}}"
-                        formControlName="urlPath" required maxlength="255" />
-                    </mat-form-field>
-                </div>
-            </div>
-            <div class="row mb-1">
-                <div class="col-lg-12">
-                    <mat-form-field appearance="outline" class="w-100">
-                        <mat-label>{{'discussion.summary' | translate}}</mat-label>
-                        <input matInput placeholder="{{'discussion.summary' | translate}}"
+                        <mat-label>{{'question.summary' | translate}}</mat-label>
+                        <input matInput placeholder="{{'question.summary' | translate}}" (keyup)="setUpdateFormURLPath()"
                         formControlName="summary" required maxlength="255" />
                     </mat-form-field>
                 </div>
             </div>
-            <div class="row mb-1">
+            <div class="row mb-3">
                 <div class="col-lg-12">
                     <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
                 </div>
             </div>
-            
+            <div class="row mb-1">
+                <div class="col-lg-12">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>{{'common.urlPath' | translate}}</mat-label>
+                        <span matPrefix class="me-3">/question/{{loggedInUser?.userId}}/</span>
+                        <input matInput placeholder="{{'common.urlPath' | translate}}" readonly
+                        formControlName="urlPath" maxlength="255" />
+                    </mat-form-field>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button  color="accent" class="mr-2">{{'common.close' | translate}}</button>
-                    <button mat-raised-button  type="submit" color="primary"
+                    <button mat-stroked-button class="me-2">{{'common.close' | translate}}</button>
+                    <button mat-raised-button type="submit" color="primary"
                     [disabled]="!updateForm.valid">{{'common.update' | translate}}</button>
                 </div>
             </div>
@@ -77,23 +81,18 @@
     </div>
 
     <div *ngIf="displayForm === 'DELETE_FORM'">
-        <label class="mat-headline text-primary">{{'discussion.delete' | translate}}</label>
+        <label class="mat-headline">{{'question.delete' | translate}}</label>
         <form [formGroup]="deleteForm" (ngSubmit)="delete()">
             <div class="row mb-1">
                 <div class="col-lg-12">
-                    <mat-grid-list cols="2" rowHeight="30px">
-                        <mat-grid-tile class="bg-color-light-gray fw-bold">{{'page.name' | translate}}</mat-grid-tile>
-                        <mat-grid-tile class="bg-color-light-gray">{{this.selectedQuestion?.summary}}</mat-grid-tile>
-                        <mat-grid-tile class="bg-color-light-gray fw-bold">{{'page.urlPath' | translate}}</mat-grid-tile>
-                        <mat-grid-tile class="bg-color-light-gray">{{this.selectedQuestion?.urlPath}}</mat-grid-tile>
-                    </mat-grid-list>
+                    <h3 [innerHTML]="selectedQuestion?.summary"></h3>
+                    <div [innerHTML]="selectedQuestion?.description"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-raised-button type="button" color="accent" class="me-2">{{'common.close' |
-                        translate}}</button>
+                    <button mat-stroked-button type="button" class="me-2">{{'common.close' | translate}}</button>
                     <button mat-raised-button type="submit" color="primary"
                         [disabled]="!deleteForm.valid">{{'common.delete' | translate}}</button>
                 </div>

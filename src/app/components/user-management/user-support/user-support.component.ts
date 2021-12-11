@@ -28,6 +28,7 @@ export class UserSupportComponent implements OnInit {
     userId: new FormControl('', [Validators.required]),
     name: new FormControl('', [Validators.required]),
     emailAddress: new FormControl('', [Validators.required]),
+    verified: new FormControl(''),
     roles: new FormArray([])
   });
 
@@ -127,6 +128,7 @@ export class UserSupportComponent implements OnInit {
     this.updateForm.get('userId')?.setValue(selectedUser.userId);
     this.updateForm.get('name')?.setValue(selectedUser.name);
     this.updateForm.get('emailAddress')?.setValue(selectedUser.emailAddress);
+    this.updateForm.get('verified')?.setValue(selectedUser.verified);
     this.deleteForm.get('userId')?.setValue(selectedUser.userId);
   }
 

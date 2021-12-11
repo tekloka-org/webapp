@@ -50,18 +50,15 @@ export class ArticleSupportComponent implements OnInit {
   ngOnInit(): void {
     this.editorConfig = this.commonService.editorConfig;
 
+    if(this.authService.isLoggedIn()){
+      this.authService.subscribeLoggedInUserSubject().subscribe(result => {
+        this.loggedInUser = this.authService.loggedInUserSubject.value as User;
+        this.addForm.get('authorId')?.setValue(this.loggedInUser.userId);
+      });
+    }
     const supportPageURL = this.router.url;
     if (supportPageURL.includes('add')) {
-      this.displayForm = 'ADD_FORM'
-      
-      if(this.authService.isLoggedIn()){
-        this.authService.subscribeLoggedInUserSubject().subscribe(result => {
-          this.loggedInUser = this.authService.loggedInUserSubject.value as User;
-          this.addForm.get('authorId')?.setValue(this.loggedInUser.userId);
-        });
-        
-        
-      }
+      this.displayForm = 'ADD_FORM' 
     }else if(supportPageURL.includes('update')){
       this.displayForm = 'UPDATE_FORM';
     }else if(supportPageURL.includes('delete')){
@@ -138,6 +135,23 @@ export class ArticleSupportComponent implements OnInit {
         }
       });
     }
+  }
+
+
+  setAddFormURLPath(){
+    let name = this.addForm.get('name')?.value;
+    let url = this.formatURL(name);
+    this.addForm.get('urlPath')?.setValue(url);
+  }
+
+  setUpdateFormURLPath(){
+    let name = this.updateForm.get('name')?.value;
+    let url = this.formatURL(name);
+    this.updateForm.get('urlPath')?.setValue(url);
+  }
+
+  formatURL(name: string): string{
+    return this.commonService.formatURL(name);
   }
 
 }

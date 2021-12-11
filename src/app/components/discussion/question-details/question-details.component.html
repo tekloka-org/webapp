@@ -9,13 +9,13 @@
         </mat-card>
         <div class="text-end me-3">
             <button mat-raised-button (click)="displayAddAnswerPage()" color="primary">
-                {{'discussion.addAnswer' | translate}}
+                {{'question.addAnswer' | translate}}
             </button>
         </div>
 
         <mat-divider class="ms-3 me-3 mt-5 mb-3"></mat-divider>
 
-        <label class="mat-headline ms-3 me-3">{{'discussion.answers' | translate}}</label>
+        <label class="mat-headline ms-3 me-3">{{'question.answers' | translate}}</label>
 
         <div class="row" *ngFor="let answer of allAnswers; let i = index">
 
@@ -34,12 +34,12 @@
                                 <button mat-menu-item (click)="displayUpdateAnswerPage(i, answer)"
                                     *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER)">
                                     <mat-icon class="me-2">edit</mat-icon>
-                                    <span>{{'discussion.updateAnswer' | translate}}</span>
+                                    <span>{{'question.updateAnswer' | translate}}</span>
                                 </button>
                                 <button mat-menu-item (click)="displayDeleteAnswerPage(i, answer)"
                                     *ngIf="hasPermission(PermissionConstants.DELETE_ANSWER)">
                                     <mat-icon class="me-2" color="warn">delete</mat-icon>
-                                    <span class="text-danger">{{'discussion.deleteAnswer' | translate}}</span>
+                                    <span class="text-danger">{{'question.deleteAnswer' | translate}}</span>
                                 </button>
                             </mat-menu>
                         </div>

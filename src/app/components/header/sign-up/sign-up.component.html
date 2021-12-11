@@ -3,20 +3,20 @@
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>{{'common.name' | translate}}</mat-label>
             <input matInput placeholder="{{'common.name' | translate}}" formControlName="name" required maxlength="255"/>
-            <mat-icon matPrefix>person</mat-icon>
+            <!-- <mat-icon matPrefix>person</mat-icon> -->
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>{{'user.emailAddress' | translate}}</mat-label>
             <input matInput placeholder="{{'common.emailAddress' | translate}}" formControlName="emailAddress" required maxlength="255"/>
-            <mat-icon matPrefix>email</mat-icon>
+            <!-- <mat-icon matPrefix>email</mat-icon> -->
         </mat-form-field>
   
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>{{'user.password' | translate}}</mat-label>
             <input matInput placeholder="{{'user.validPassword' | translate}}" formControlName="password" 
             required maxlength="255" type="password"/>
-            <mat-icon matPrefix>lock_outlined</mat-icon>
+            <!-- <mat-icon matPrefix>lock_outlined</mat-icon> -->
             <mat-hint>{{'user.validPassword' | translate}}</mat-hint>
         </mat-form-field>
   
@@ -24,7 +24,7 @@
             <mat-label>{{'user.confirmPassword' | translate}}</mat-label>
             <input matInput placeholder="{{'user.confirmPassword' | translate}}" formControlName="confirmPassword" 
             required maxlength="255" type="password"/>
-            <mat-icon matPrefix>lock</mat-icon>
+            <!-- <mat-icon matPrefix>lock</mat-icon> -->
             <mat-error *ngIf="signUpForm.errors?.passwordNotMatch && 
             signUpForm.get('confirmPassword')?.dirty || signUpForm.get('confirmPassword')?.touched">
                 {{'messages.passwordsMismatch' | translate}}
