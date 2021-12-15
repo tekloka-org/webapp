@@ -14,5 +14,46 @@
                 </div>
             </div>
         </mat-card>
+
+        <mat-card class="w-75 h-75 mt-5" *ngIf="action === 'change-password'">
+            <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="!actionCompleted">
+                <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+                    <div class="mat-headline text-start mt-5">{{'login.chagePassword' | translate}}</div>
+                    
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>{{'user.emailAddress' | translate}}</mat-label>
+                        <input matInput placeholder="{{'common.emailAddress' | translate}}" formControlName="emailAddress" required maxlength="255" readonly/>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{'user.password' | translate}}</mat-label>
+                        <input matInput placeholder="{{'user.validPassword' | translate}}" formControlName="password" 
+                        required maxlength="255" type="password"/>
+                        <mat-hint>{{'user.validPassword' | translate}}</mat-hint>
+                    </mat-form-field>
+                
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>{{'user.confirmPassword' | translate}}</mat-label>
+                        <input matInput placeholder="{{'user.confirmPassword' | translate}}" formControlName="confirmPassword" 
+                        required maxlength="255" type="password"/>
+                        <mat-error *ngIf="changePasswordForm.errors?.passwordNotMatch && 
+                        changePasswordForm.get('confirmPassword')?.dirty || changePasswordForm.get('confirmPassword')?.touched">
+                            {{'messages.passwordsMismatch' | translate}}
+                        </mat-error>
+                    </mat-form-field>
+                
+                    <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="changePasswordForm.invalid || isProcessing">
+                        <img src="assets/images/spinner.gif" *ngIf="isProcessing"
+                            height="20px" width="20px" class="p-0 m-0"/> {{'common.submit' | translate}}
+                    </button>
+                </form>
+            </div>
+            <div class="row text-center" *ngIf="actionCompleted">
+                <div class="col-12">
+                    <div class="mat-headline mt-4">{{data?.message | translate}}</div> 
+                </div>
+            </div>
+        </mat-card>
+
     </div>
 </div>

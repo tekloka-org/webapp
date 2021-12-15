@@ -6,6 +6,15 @@
         "signUp": "Sign Up",
         "login": "Login"
     },
+    "signUp":{
+        "alreadyHaveAccount": "Already have an Account? Click here to Login"
+    },
+    "login":{
+        "forgotPassword": "Forgot password?",
+        "createAccount": "Create account?",
+        "resetPassword": "Reset password",
+        "chagePassword": "Change password"
+    },
     "common": {
         "filter": "Filter",
         "filterPlaceHolder": "Enter text to filter",
@@ -23,7 +32,8 @@
         "author": "Author",
         "createdOn": "Created On",
         "modifiedOn": "Modified On",
-        "ok": "Ok"
+        "ok": "Ok",
+        "submit": "Submit"
     },
     "user": {
         "users": "Users",
@@ -104,6 +114,15 @@
         "loginFailed": "Not able to login",
         "passwordsMismatch": "Password and Confirm password should match",
         "signUpSuccess": "Signup Success",
-        "signUpSuccessInfo": "Account veification link is sent to your email. Please confirm to login to your account."
+        "signUpSuccessInfo": "Account veification link is sent to your email. Please confirm to login to your account.",
+        "resetPasswordLinkGenerated": "Reset password email sent",
+        "resetPasswordLinkGeneratedInfo": "Please use the email sent to registered email to change the password",
+        "userNotFound": "User not found",
+        "userNotFoundInfo": "User doesnot exist or is removed from the system",
+        "emailSendingFailure": "Email sending failed",
+        "emailSendingFailureInfo": "Failed to send the email due to some technical issues. Please try again later",
+        "passwordChangeSuccess": "Password changed successfully. Please login now",
+        "resetPasswordLinkExpired": "Password reset link is expired",
+        "resetPasswordLinkInvalid": "Password reset link is not valid"
     }
 }

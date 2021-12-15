@@ -8,6 +8,8 @@ import { ResponseConstants } from 'src/app/constants/response-constants';
 import { ApiResponse } from 'src/app/models/api-response';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +44,8 @@ export class LoginComponent implements OnInit {
           this.authService.publishRoleKeysSubject(data.roleKeys);
           this.authService.publishPermissionKeysSubject(data.permissionKeys);
           this.dialog.getDialogById('loginDialog')!.close();
-          if(this.router.url.split('?')[0] === '/process/email-verification'){
+          if(this.router.url.split('?')[0] === '/process/email-verification' 
+              || this.router.url.split('?')[0] === '/process/change-password'){
             this.router.navigate(['home']);
           }
         }else if(response.code === ResponseConstants.EMAIL_NOT_VERIFIED){
@@ -53,6 +56,22 @@ export class LoginComponent implements OnInit {
         this.isProcessing = false;
       });
     }
+  }
+
+  displayRegisterPopup(){
+    this.dialog.closeAll();
+    this.dialog.open(SignUpComponent, {
+       width: '500px',
+       id: 'signUpDialog'
+    });
+  }
+
+  displayForgotPasswordPopup(){
+    this.dialog.closeAll();
+    this.dialog.open(ForgotPasswordComponent, {
+       width: '500px',
+       id: 'signUpDialog'
+    });
   }
 
 }

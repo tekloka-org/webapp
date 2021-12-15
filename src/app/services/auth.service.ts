@@ -86,7 +86,7 @@ export class AuthService {
   }
 
   signUp(form: any): any {
-    return this.http.post(environment.apiUrl + ApiConstants.SIGN_UP_PATH,
+    return this.http.post(environment.apiUrl + ApiConstants.SIGN_UP,
             form.value, {headers: this.commonService.getEmptyHeaders()});
   }
 
@@ -98,8 +98,18 @@ export class AuthService {
   }
 
   login(form: any): any {
-    return this.http.post(environment.apiUrl + ApiConstants.LOGIN_PATH,
+    return this.http.post(environment.apiUrl + ApiConstants.LOGIN,
             form.value, {headers: this.commonService.getEmptyHeaders()});
+  }
+
+  resetPasswordLink(form: any): any {
+    return this.http.post(environment.apiUrl + ApiConstants.RESET_PASSWORD_LINK,
+            form.value, {headers: this.commonService.getEmptyHeaders()});
+  }
+
+  changePassword(form: any): any {
+    return this.http.post(environment.apiUrl + ApiConstants.CHANGE_PASSWORD,
+      form.value, {headers: this.commonService.getEmptyHeaders()});
   }
 
   hasPermission(permissionKey: string): boolean {

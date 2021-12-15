@@ -38,6 +38,7 @@ import { AnswerSupportComponent } from './components/discussion/answer-support/a
 import { ProcessComponent } from './components/common/process/process.component';
 import { LoginComponent } from './components/header/login/login.component';
 import { SignUpComponent } from './components/header/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/header/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { SignUpComponent } from './components/header/sign-up/sign-up.component';
     AnswerSupportComponent,
     ProcessComponent,
     LoginComponent,
-    SignUpComponent
+    SignUpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

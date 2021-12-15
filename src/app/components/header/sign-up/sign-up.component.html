@@ -1,38 +1,44 @@
 <div class="mat-headline">{{'header.signUp' | translate}}</div>
 <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>{{'common.name' | translate}}</mat-label>
-            <input matInput placeholder="{{'common.name' | translate}}" formControlName="name" required maxlength="255"/>
-            <!-- <mat-icon matPrefix>person</mat-icon> -->
-        </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>{{'common.name' | translate}}</mat-label>
+        <input matInput placeholder="{{'common.name' | translate}}" formControlName="name" required maxlength="255"/>
+        <!-- <mat-icon matPrefix>person</mat-icon> -->
+    </mat-form-field>
 
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>{{'user.emailAddress' | translate}}</mat-label>
-            <input matInput placeholder="{{'common.emailAddress' | translate}}" formControlName="emailAddress" required maxlength="255"/>
-            <!-- <mat-icon matPrefix>email</mat-icon> -->
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>{{'user.password' | translate}}</mat-label>
-            <input matInput placeholder="{{'user.validPassword' | translate}}" formControlName="password" 
-            required maxlength="255" type="password"/>
-            <!-- <mat-icon matPrefix>lock_outlined</mat-icon> -->
-            <mat-hint>{{'user.validPassword' | translate}}</mat-hint>
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline" class="w-100">
-            <mat-label>{{'user.confirmPassword' | translate}}</mat-label>
-            <input matInput placeholder="{{'user.confirmPassword' | translate}}" formControlName="confirmPassword" 
-            required maxlength="255" type="password"/>
-            <!-- <mat-icon matPrefix>lock</mat-icon> -->
-            <mat-error *ngIf="signUpForm.errors?.passwordNotMatch && 
-            signUpForm.get('confirmPassword')?.dirty || signUpForm.get('confirmPassword')?.touched">
-                {{'messages.passwordsMismatch' | translate}}
-            </mat-error>
-        </mat-form-field>
-  
-        <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="signUpForm.invalid || isProcessing">
-            <img src="assets/images/spinner.gif" *ngIf="isProcessing"
-                height="20px" width="20px" class="p-0 m-0"/> {{'header.signUp' | translate}}
-        </button>
-      </form>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>{{'user.emailAddress' | translate}}</mat-label>
+        <input matInput placeholder="{{'common.emailAddress' | translate}}" formControlName="emailAddress" required maxlength="255"/>
+        <!-- <mat-icon matPrefix>email</mat-icon> -->
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>{{'user.password' | translate}}</mat-label>
+        <input matInput placeholder="{{'user.validPassword' | translate}}" formControlName="password" 
+        required maxlength="255" type="password"/>
+        <!-- <mat-icon matPrefix>lock_outlined</mat-icon> -->
+        <mat-hint>{{'user.validPassword' | translate}}</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>{{'user.confirmPassword' | translate}}</mat-label>
+        <input matInput placeholder="{{'user.confirmPassword' | translate}}" formControlName="confirmPassword" 
+        required maxlength="255" type="password"/>
+        <!-- <mat-icon matPrefix>lock</mat-icon> -->
+        <mat-error *ngIf="signUpForm.errors?.passwordNotMatch && 
+        signUpForm.get('confirmPassword')?.dirty || signUpForm.get('confirmPassword')?.touched">
+            {{'messages.passwordsMismatch' | translate}}
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="signUpForm.invalid || isProcessing">
+        <img src="assets/images/spinner.gif" *ngIf="isProcessing"
+            height="20px" width="20px" class="p-0 m-0"/> {{'header.signUp' | translate}}
+    </button>
+
+    <div class="row mt-1">
+        <div class="col-12">
+            <a class="clickable-link" (click)="displayLoginPopup()">{{'signUp.alreadyHaveAccount' | translate}}</a>
+        </div>
+    </div>
+</form>

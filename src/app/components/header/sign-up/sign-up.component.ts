@@ -8,6 +8,7 @@ import { ApiResponse } from 'src/app/models/api-response';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommonService } from 'src/app/services/common.service';
 import { ModalComponent } from '../../common/modal/modal.component';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -80,5 +81,12 @@ export class SignUpComponent implements OnInit {
 
   }
 
+  displayLoginPopup(){
+    this.dialog.closeAll();
+    this.dialog.open(LoginComponent, {
+      width: '500px',
+      id: 'loginDialog'
+   });
+  }
 }
 

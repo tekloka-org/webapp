@@ -1,8 +1,10 @@
 export class ApiConstants {
 
-    public static SIGN_UP_PATH = '/user-service/public/sign-up';  
+    public static SIGN_UP = '/user-service/public/sign-up';  
     public static EMAIL_VERIFICATION = '/user-service/public/email-verification/{emailAddress}/{verificationKey}';    
-    public static LOGIN_PATH = '/user-service/public/login';
+    public static LOGIN = '/user-service/public/login';
+    public static RESET_PASSWORD_LINK = '/user-service/public/reset-password-link';
+    public static CHANGE_PASSWORD = '/user-service/public/change-password';
 
     public static UPLOAD_CONTENT_IMAGE = '/file-server/file/upload-content-image';
 
