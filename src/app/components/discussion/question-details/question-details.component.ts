@@ -11,6 +11,7 @@ import { Question } from 'src/app/models/question';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { DiscussionService } from 'src/app/services/discussion.service';
+import { ModalComponent } from '../../common/modal/modal.component';
 import { AnswerSupportComponent } from '../answer-support/answer-support.component';
 
 @Component({
@@ -25,6 +26,7 @@ export class QuestionDetailsComponent implements OnInit {
   selectedQuestion: Question;
   allAnswers: Answer[];
   loggedInUser: User;
+  isLoggedIn: boolean = false;
   PermissionConstants = PermissionConstants;
 
   constructor(private activatedRoute: ActivatedRoute, private discussionService: DiscussionService,
@@ -33,11 +35,10 @@ export class QuestionDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if (this.authService.isLoggedIn()) {
-      this.authService.subscribeLoggedInUserSubject().subscribe(result => {
-        this.loggedInUser = this.authService.loggedInUserSubject.value as User;
-      });
-    }
+    this.authService.subscribeLoggedInUserSubject().subscribe(result => {
+      this.loggedInUser = this.authService.loggedInUserSubject.value as User;
+      this.isLoggedIn = this.authService.isLoggedIn();
+    });
 
     this.activatedRoute.params.subscribe(params => {
       this.selectedQuestionAuthorId = params['author-id']
@@ -64,32 +65,31 @@ export class QuestionDetailsComponent implements OnInit {
   }
 
   displayAddAnswerPage() {
-    let messages = {
-      title: 'Add Answer'
-    };
-    this.translateService.get('question.addAnswer').subscribe((res: string) => {
-      messages.title = res;
-    });
-    const dialogRef = this.dialog.open(AnswerSupportComponent, {
-      width: '50%',
-      id: 'add-answer-modal',
-      data: { tab: ModalConstants.ADD_ANSWER_MODAL, question: this.selectedQuestion, loggedInUserId: this.loggedInUser.userId }
-    });
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result?.code === ResponseConstants.ANSWER_SAVED) {
-        this.allAnswers.unshift(result.answer);
-      }
-    });
+    if(this.isLoggedIn){
+      const dialogRef = this.dialog.open(AnswerSupportComponent, {
+        width: '50%',
+        id: 'add-answer-modal',
+        data: { tab: ModalConstants.ADD_ANSWER_MODAL, question: this.selectedQuestion, loggedInUserId: this.loggedInUser.userId }
+      });
+      dialogRef.afterClosed().subscribe((result: any) => {
+        if (result?.code === ResponseConstants.ANSWER_SAVED) {
+          this.allAnswers.unshift(result.answer);
+        }
+      });
+    }else{
+      let messages = {
+        title: 'messages.mustLogin',
+        content: ''
+      };
+      const modalDialogRef = this.dialog.open(ModalComponent, {
+        width: '500px',
+        id: 'modalDialog',
+        data: { tab: ModalConstants.INFO_MODAL, messages: messages }
+     });
+    }
   }
 
   displayUpdateAnswerPage(index: number, answer: Answer) {
-    let messages = {
-      title: 'Update Answer',
-      answer: answer
-    };
-    this.translateService.get('question.updateAnswer').subscribe((res: string) => {
-      messages.title = res;
-    });
     const dialogRef = this.dialog.open(AnswerSupportComponent, {
       width: '50%',
       id: 'update-answer-modal',
@@ -104,13 +104,6 @@ export class QuestionDetailsComponent implements OnInit {
   }
 
   displayDeleteAnswerPage(index: number, answer: Answer) {
-    let messages = {
-      title: 'Delete Answer',
-      answer: answer
-    };
-    this.translateService.get('question.deleteAnswer').subscribe((res: string) => {
-      messages.title = res;
-    });
     const dialogRef = this.dialog.open(AnswerSupportComponent, {
       width: '500px',
       id: 'delete-answer-modal',

@@ -7,7 +7,6 @@ import { ApiResponse } from 'src/app/models/api-response';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { CommonService } from 'src/app/services/common.service';
-import { ModalComponent } from '../../common/modal/modal.component';
 
 @Component({
   selector: 'app-category-support',

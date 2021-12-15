@@ -123,6 +123,7 @@
         "emailSendingFailureInfo": "Failed to send the email due to some technical issues. Please try again later",
         "passwordChangeSuccess": "Password changed successfully. Please login now",
         "resetPasswordLinkExpired": "Password reset link is expired",
-        "resetPasswordLinkInvalid": "Password reset link is not valid"
+        "resetPasswordLinkInvalid": "Password reset link is not valid",
+        "mustLogin": "User must login to proceed"
     }
 }

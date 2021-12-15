@@ -8,7 +8,6 @@ import { ApiResponse } from 'src/app/models/api-response';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthDialogComponent } from '../../header/auth-dialog/auth-dialog.component';
 import { LoginComponent } from '../../header/login/login.component';
-import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-process',

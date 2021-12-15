@@ -8,7 +8,8 @@
 
         </mat-card>
         <div class="text-end me-3">
-            <button mat-raised-button (click)="displayAddAnswerPage()" color="primary">
+            <button mat-raised-button (click)="displayAddAnswerPage()" color="primary" 
+            matTooltip="{{'messages.mustLogin' | translate }}" matTooltipPosition="below" matTooltipHideDelay="5000">
                 {{'question.addAnswer' | translate}}
             </button>
         </div>
