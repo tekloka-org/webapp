@@ -9,7 +9,10 @@
                         class="border-bottom border-color-gray p-0 m-0">
                         <div class="row w-100 m-0 p-0">
                             <div class="col-12 ps-0" (click)="showArticleDetails(a)" >
-                                <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/> 
+                                <!-- <img src="assets/images/pinwheel.png" height="20px" width="20px" class="p-0 m-0 rotate"/>  -->
+                                <button mat-icon-button>
+                                    <mat-icon class="blink">new_releases</mat-icon>
+                                </button>
                                 <span class="ms-2">{{a.name}}</span>
                             </div>
                         </div>
@@ -37,7 +40,7 @@
                             <div class="col-12 ps-0 align-middle pt-1" (click)="showQuestionDetails(q)">
                                 <button mat-icon-button>
                                     <mat-icon class="blink">new_releases</mat-icon>
-                                    </button>
+                                </button>
                                 <span class="ms-2">{{q.summary}}</span>
                             </div>
                         </div>
