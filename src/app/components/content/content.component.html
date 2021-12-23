@@ -1,5 +1,5 @@
 
-<mat-sidenav-container id="app-sidenav-container" class="h-100">
+<mat-sidenav-container id="app-sidenav-container" class="h-auto">
     <mat-sidenav
       id="app-sidenav"
       mode="side"
@@ -46,7 +46,7 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content
-      id="app-sidenav-content" class="overflow-hidden h-100"
+      id="app-sidenav-content" class="h-100"
       [ngStyle]="{ 'margin-left': sideNavWidth, 'transition': 'margin-left 0.5s' }">
       <router-outlet></router-outlet>
     </mat-sidenav-content>

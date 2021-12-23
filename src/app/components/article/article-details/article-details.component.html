@@ -1,2 +1,8 @@
-<h1 [innerHTML]="selectedArticle?.name"></h1>
-<div [innerHTML]="selectedArticle?.content"></div>
+<div class="row m-0 p-0 h-100">
+    <div class="col-10 border-end border-color-gray">
+        <mat-card class="m-3">
+            <h1 [innerHTML]="selectedArticle?.name"></h1>
+            <div [innerHTML]="selectedArticle?.content"></div>
+        </mat-card>
+    </div>
+</div>

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,7 +46,8 @@ export class ArticleSupportComponent implements OnInit {
   loggedInUser: User;
 
   constructor(private articleService: ArticleService, private activatedRoute: ActivatedRoute,
-    private commonService: CommonService, private router: Router, private authService: AuthService) { }
+    private commonService: CommonService, private router: Router, private authService: AuthService,
+    private location: Location) { }
   
   ngOnInit(): void {
     this.editorConfig = this.commonService.editorConfig;
@@ -137,7 +139,6 @@ export class ArticleSupportComponent implements OnInit {
     }
   }
 
-
   setAddFormURLPath(){
     let name = this.addForm.get('name')?.value;
     let url = this.formatURL(name);
@@ -152,6 +153,10 @@ export class ArticleSupportComponent implements OnInit {
 
   formatURL(name: string): string{
     return this.commonService.formatURL(name);
+  }
+
+  back(){
+    this.location.back();
   }
 
 }

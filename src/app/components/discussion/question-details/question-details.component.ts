@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalConstants } from 'src/app/constants/modal-constants';
 import { PermissionConstants } from 'src/app/constants/permission-constants';
@@ -10,6 +12,7 @@ import { ApiResponse } from 'src/app/models/api-response';
 import { Question } from 'src/app/models/question';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { CommonService } from 'src/app/services/common.service';
 import { DiscussionService } from 'src/app/services/discussion.service';
 import { ModalComponent } from '../../common/modal/modal.component';
 import { AnswerSupportComponent } from '../answer-support/answer-support.component';
@@ -29,15 +32,26 @@ export class QuestionDetailsComponent implements OnInit {
   isLoggedIn: boolean = false;
   PermissionConstants = PermissionConstants;
 
+  addAnswerForm = new FormGroup({
+    description : new FormControl('', [Validators.required]),
+    authorId : new FormControl('', [Validators.required]),
+    questionId : new FormControl('', [Validators.required])
+  });
+
+  editorConfig: AngularEditorConfig;
+
   constructor(private activatedRoute: ActivatedRoute, private discussionService: DiscussionService,
     private translateService: TranslateService, public dialog: MatDialog,
-    private authService: AuthService) { }
+    private authService: AuthService, private commonService: CommonService) { }
 
   ngOnInit(): void {
+
+    this.editorConfig = this.commonService.editorConfig;
 
     this.authService.subscribeLoggedInUserSubject().subscribe(result => {
       this.loggedInUser = this.authService.loggedInUserSubject.value as User;
       this.isLoggedIn = this.authService.isLoggedIn();
+      this.addAnswerForm.get('authorId')?.setValue(this.loggedInUser?.userId);
     });
 
     this.activatedRoute.params.subscribe(params => {
@@ -49,10 +63,12 @@ export class QuestionDetailsComponent implements OnInit {
           if (response.code === ResponseConstants.QUESTION_FOUND) {
             const data = response.data as any;
             this.selectedQuestion = data.question;
+            this.addAnswerForm.get('questionId')?.setValue(this.selectedQuestion?.questionId);
           }
         });
       } else {
         this.selectedQuestion = questionParam;
+        this.addAnswerForm.get('questionId')?.setValue(this.selectedQuestion?.questionId);
       }
     });
 
@@ -128,6 +144,31 @@ export class QuestionDetailsComponent implements OnInit {
       hasAccess = true;
     }
     return hasAccess;
+  }
+
+  saveAnswer(){
+    if(this.isLoggedIn){      
+      if(this.addAnswerForm.valid){
+        this.discussionService.saveAnswer(this.addAnswerForm).subscribe((response: ApiResponse) => {
+          if(response.code === ResponseConstants.ANSWER_SAVED){
+            const data = response.data as any;
+            this.commonService.displaySnackBarMessages('added', 3000);
+            this.allAnswers.push(data.answer as Answer);
+            this.addAnswerForm.get('description')?.setValue('');
+          }
+        });
+      }
+    }else{
+      let messages = {
+        title: 'messages.mustLogin',
+        content: ''
+      };
+      const modalDialogRef = this.dialog.open(ModalComponent, {
+        width: '500px',
+        id: 'modalDialog',
+        data: { tab: ModalConstants.INFO_MODAL, messages: messages }
+     });
+    }
   }
 
 }

@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-stroked-button class="me-2">{{'common.close' | translate}}</button>
+                    <button mat-stroked-button type="button" class="me-2" (click)="back()">{{'common.back' | translate}}</button>
                     <button mat-raised-button type="submit" color="primary" [disabled]="!addForm.valid">{{'common.add' |
                         translate}}</button>
                 </div>
@@ -70,7 +70,7 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-stroked-button class="me-2">{{'common.close' | translate}}</button>
+                    <button mat-stroked-button type="button" class="me-2" (click)="back()">{{'common.back' | translate}}</button>
                     <button mat-raised-button type="submit" color="primary"
                         [disabled]="!updateForm.valid">{{'common.update' | translate}}</button>
                 </div>
@@ -90,9 +90,9 @@
             <div class="row">
                 <div class="col-lg-6"></div>
                 <div class="col-lg-6 text-end">
-                    <button mat-stroked-button type="button" class="me-2">{{'common.close' |
+                    <button mat-stroked-button type="button" class="me-2" (click)="back()">{{'common.back' |
                         translate}}</button>
-                    <button mat-raised-button type="submit" color="primary"
+                    <button mat-raised-button type="submit" color="warn"
                         [disabled]="!deleteForm.valid">{{'common.delete' | translate}}</button>
                 </div>
             </div>

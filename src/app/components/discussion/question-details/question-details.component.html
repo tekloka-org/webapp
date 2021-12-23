@@ -6,48 +6,65 @@
                 <div [innerHTML]="selectedQuestion?.description"></div>
             </div>
 
+            <mat-divider class="mt-2 bg-color-dark-gray"></mat-divider>
+            <label class="mat-headline mt-5">{{'question.answers' | translate}}</label>
+
+            <div class="row" *ngFor="let answer of allAnswers; let i = index">
+                <div class="col-12">
+                        <div class="row mt-1 align-items-center" style="min-height: 75px;">
+                            <div class="col-11">
+                                <div [innerHTML]="answer.description"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-12 text-end">
+                                <button mat-stroked-button color="primary" (click)="displayUpdateAnswerPage(i, answer)" class="me-2"
+                                    *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER)">
+                                    <span>{{'common.update' | translate}}</span>
+                                </button>
+                                <button mat-stroked-button color="warn" (click)="displayDeleteAnswerPage(i, answer)"
+                                    *ngIf="hasPermission(PermissionConstants.DELETE_ANSWER)">
+                                    <span class="text-danger">{{'common.delete' | translate}}</span>
+                                </button>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <form [formGroup]="addAnswerForm" (ngSubmit)="saveAnswer()">
+                        <!-- <h1 mat-dialog-title >{{'question.addAnswer' | translate}}</h1> -->
+                        <div mat-dialog-content>
+                            <div class="row mb-1">
+                                <div class="col-lg-12">
+                                    <angular-editor formControlName="description" [config]="editorConfig"></angular-editor>
+                                </div>
+                            </div>
+                        </div>
+                        <div mat-dialog-actions align="end">
+                            <!-- <button mat-stroked-button  color="warn" class="mr-2" mat-dialog-close>{{'common.close' | translate}}</button> -->
+                            <button mat-raised-button  type="submit" color="primary"
+                            [disabled]="isLoggedIn && !addAnswerForm.valid">{{'question.addAnswer' | translate}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </mat-card>
-        <div class="text-end me-3">
+        <!-- <div class="text-end me-3">
             <button mat-raised-button (click)="displayAddAnswerPage()" color="primary" 
             matTooltip="{{'messages.mustLogin' | translate }}" matTooltipPosition="below" matTooltipHideDelay="5000">
                 {{'question.addAnswer' | translate}}
             </button>
-        </div>
+        </div> -->
 
-        <mat-divider class="ms-3 me-3 mt-5 mb-3"></mat-divider>
+        
+        
 
-        <label class="mat-headline ms-3 me-3">{{'question.answers' | translate}}</label>
-
-        <div class="row" *ngFor="let answer of allAnswers; let i = index">
-
-            <div class="col-12">
-                <mat-card class="ms-3 me-3 mb-3">
-                    <div class="row">
-                        <div class="col-11">
-                            <div [innerHTML]="answer.description"></div>
-                        </div>
-                        <div class="col-1 text-end">
-                            <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER) 
-                                || hasPermission(PermissionConstants.DELETE_ANSWER)">
-                                <mat-icon>more_vert</mat-icon>
-                            </button>
-                            <mat-menu #menu="matMenu">
-                                <button mat-menu-item (click)="displayUpdateAnswerPage(i, answer)"
-                                    *ngIf="hasAnswerEditAccess(answer) || hasPermission(PermissionConstants.UPDATE_ANSWER)">
-                                    <mat-icon class="me-2">edit</mat-icon>
-                                    <span>{{'question.updateAnswer' | translate}}</span>
-                                </button>
-                                <button mat-menu-item (click)="displayDeleteAnswerPage(i, answer)"
-                                    *ngIf="hasPermission(PermissionConstants.DELETE_ANSWER)">
-                                    <mat-icon class="me-2" color="warn">delete</mat-icon>
-                                    <span class="text-danger">{{'question.deleteAnswer' | translate}}</span>
-                                </button>
-                            </mat-menu>
-                        </div>
-                    </div>
-                </mat-card>
-            </div>
-        </div>
+        
+        
     </div>
     <div class="col-2">
 

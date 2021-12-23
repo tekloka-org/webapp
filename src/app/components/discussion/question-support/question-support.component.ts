@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -45,7 +46,8 @@ export class QuestionSupportComponent implements OnInit {
   loggedInUser: User;
 
   constructor(private discussionService: DiscussionService, private activatedRoute: ActivatedRoute,
-    private commonService: CommonService, private router: Router, private authService: AuthService) { }
+    private commonService: CommonService, private router: Router, private authService: AuthService,
+    private location: Location) { }
   
   ngOnInit(): void {
     this.editorConfig = this.commonService.editorConfig;
@@ -151,4 +153,9 @@ export class QuestionSupportComponent implements OnInit {
   formatURL(summary: string): string{
     return this.commonService.formatURL(summary);
   }
+
+  back(){
+    this.location.back();
+  }
+
 }

@@ -33,7 +33,8 @@
         "createdOn": "Created On",
         "modifiedOn": "Modified On",
         "ok": "Ok",
-        "submit": "Submit"
+        "submit": "Submit",
+        "back": "Back"
     },
     "user": {
         "users": "Users",
